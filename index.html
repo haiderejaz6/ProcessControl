@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PSE-823: Advanced Process Dynamics and Control</title>
+<style>
+  :root {
+    --blue: #0b3d91;
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --card-bg: #f7f7f9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    background: var(--blue);
+    color: #fff;
+    padding: 48px 24px 40px;
+  }
+  header .inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+  }
+  header p {
+    margin: 4px 0;
+    opacity: 0.92;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  h2 {
+    color: var(--blue);
+    border-bottom: 3px solid var(--blue);
+    padding-bottom: 8px;
+    margin-top: 40px;
+  }
+  .lecture-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .lecture-card {
+    background: var(--card-bg);
+    border-left: 4px solid var(--blue);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+  .lecture-card .title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+  .lecture-card .meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .lecture-card a {
+    display: inline-block;
+    margin-right: 16px;
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .lecture-card a:hover {
+    text-decoration: underline;
+  }
+  .empty-note {
+    color: var(--muted);
+    font-style: italic;
+  }
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>PSE-823: Advanced Process Dynamics and Control</h1>
+    <p>MS elective &mdash; School of Chemical and Materials Engineering, NUST</p>
+    <p>Haider Ejaz, PhD</p>
+  </div>
+</header>
+
+<main>
+  <h2>Lectures</h2>
+  <ul class="lecture-list">
+    <li class="lecture-card">
+      <div class="title">Lecture 1 &mdash; Introductory Concepts &amp; Modeling Tools for Process Dynamics</div>
+      <div class="meta">Coughanowr &amp; LeBlanc, Chapters 1&ndash;2</div>
+      <a href="lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2_slides.slides.html">View slides</a>
+      <a href="lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2.ipynb">Download notebook (.ipynb)</a>
+    </li>
+  </ul>
+  <p class="empty-note">More lectures are added here as the course progresses.</p>
+
+  <h2>About this course</h2>
+  <p>
+    PSE-823 bridges basic single-loop process control and Model Predictive Control (MPC),
+    with an emphasis on the economic aspects of advanced control technologies.
+    Lectures are authored as Jupyter notebooks &mdash; combining explanatory text with live
+    Python (numpy, scipy, sympy, python-control, GEKKO) &mdash; and exported to
+    self-contained reveal.js slide decks that work fully offline.
+  </p>
+</main>
+
+<footer>
+  Source: <a href="https://github.com/haiderejaz6/ProcessControl">github.com/haiderejaz6/ProcessControl</a>
+</footer>
+
+</body>
+</html>
