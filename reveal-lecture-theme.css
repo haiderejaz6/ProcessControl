@@ -1,0 +1,128 @@
+/* PSE-823 reveal.js lecture theme
+   Matches the visual identity of lecture.css (the Marp theme used for other
+   PSE-823 / CHE-323 lectures): Segoe UI, white background, dark-blue (#0b3d91)
+   headings and accents, light-gray code blocks with a blue left border. */
+
+.reveal {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #1a1a1a;
+}
+
+.reveal .slides section {
+  text-align: left;
+  background: #ffffff;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  text-transform: none;
+  text-align: left;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.reveal h1 {
+  font-size: 1.7em;
+  color: #0b3d91;
+  border-bottom: 4px solid #0b3d91;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+.reveal h2 {
+  font-size: 1.35em;
+  color: #0b3d91;
+}
+
+.reveal h3 {
+  font-size: 1.05em;
+  color: #444444;
+  margin-bottom: 0.6em;
+}
+
+.reveal p,
+.reveal li {
+  font-size: 0.72em;
+  line-height: 1.4;
+}
+
+.reveal code {
+  background: #f4f4f4;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Consolas', 'Menlo', monospace;
+}
+
+.reveal pre {
+  background: #f7f7f9;
+  border-left: 4px solid #0b3d91;
+  border-radius: 4px;
+  box-shadow: none;
+  width: 100%;
+  max-height: 480px;
+  font-size: 0.5em;
+  padding: 14px 16px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.reveal pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 1em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.reveal table {
+  font-size: 0.68em;
+}
+
+.reveal table th {
+  background: #0b3d91;
+  color: #ffffff;
+}
+
+.reveal table th,
+.reveal table td {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+}
+
+.reveal .slides section img {
+  max-height: 46vh;
+  display: block;
+  margin: 0.4em auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.reveal a {
+  color: #0b3d91;
+}
+
+.reveal .output_area {
+  text-align: center;
+}
+
+/* Full-bleed dark title / section-break slides (matches Marp's section.title look) */
+.reveal .slides section div[style*="background:#0b3d91"] h1,
+.reveal .slides section div[style*="background: #0b3d91"] h1 {
+  color: #ffffff !important;
+  border-bottom: 4px solid #ffffff;
+}
+
+.reveal .slides section div[style*="background:#0b3d91"] h2,
+.reveal .slides section div[style*="background: #0b3d91"] h2,
+.reveal .slides section div[style*="background:#0b3d91"] h3,
+.reveal .slides section div[style*="background: #0b3d91"] h3,
+.reveal .slides section div[style*="background:#0b3d91"] h4,
+.reveal .slides section div[style*="background: #0b3d91"] h4,
+.reveal .slides section div[style*="background:#0b3d91"] h5,
+.reveal .slides section div[style*="background: #0b3d91"] h5,
+.reveal .slides section div[style*="background:#0b3d91"] p,
+.reveal .slides section div[style*="background: #0b3d91"] p {
+  color: #e8edf8 !important;
+}
