@@ -11,6 +11,7 @@ cd "$(dirname "$0")"
 
 NB=PSE-823_Lecture-01_Ch1-2.ipynb
 SLIDES=PSE-823_Lecture-01_Ch1-2_slides.slides.html
+COLAB=PSE-823_Lecture-01_Ch1-2_colab.ipynb
 ASSETS=../../assets   # shared reveal.js/ + mathjax/, relative to this lecture folder
 
 echo "== Building notebook =="
@@ -153,4 +154,10 @@ else
     echo "OK: fully self-contained, no external CDN dependencies."
 fi
 
-echo "== Done: $SLIDES =="
+echo "== Generating Colab variant =="
+# Same lecture with absolute image URLs + a pip-install cell, since Colab has
+# neither the images/ folder nor python-control. Add --strip-notes here to
+# build a student copy without the instructor answer keys.
+python3 ../../tools/make_colab.py "$NB"
+
+echo "== Done: $SLIDES + $COLAB =="
