@@ -3,131 +3,484 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="PSE-823: Advanced Process Dynamics and Control — MS elective at SCME, NUST. Lecture slides, Colab notebooks and course materials.">
 <title>PSE-823: Advanced Process Dynamics and Control</title>
 <style>
+  /* ---------- tokens ---------- */
   :root {
-    --blue: #0b3d91;
-    --bg: #ffffff;
-    --text: #1a1a1a;
-    --muted: #666;
-    --card-bg: #f7f7f9;
+    --brand: #0b3d91;
+    --brand-hover: #0a337a;
+    --brand-contrast: #ffffff;
+    --brand-soft: #eef3fc;
+
+    --bg: #fbfcfe;
+    --surface: #ffffff;
+    --text: #16181d;
+    --text-muted: #5b616e;
+    --border: #e3e7ee;
+    --border-strong: #cfd6e2;
+
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, .05);
+    --shadow-md: 0 6px 20px -6px rgba(16, 24, 40, .14), 0 2px 6px -2px rgba(16, 24, 40, .07);
+
+    --radius: 12px;
+    --radius-sm: 8px;
+    --measure: 940px;
+    --font: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+            Arial, "Noto Sans", sans-serif;
   }
-  * { box-sizing: border-box; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --brand: #8ab4f8;          /* lightened so it clears contrast on dark */
+      --brand-hover: #a6c8ff;
+      --brand-contrast: #0b1220;
+      --brand-soft: #16203a;
+
+      --bg: #0e1116;
+      --surface: #151a21;
+      --text: #e7eaf0;
+      --text-muted: #9aa3b2;
+      --border: #232a34;
+      --border-strong: #303945;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+      --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, .6), 0 2px 6px -2px rgba(0, 0, 0, .4);
+    }
+  }
+
+  /* ---------- base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
     margin: 0;
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  header {
-    background: var(--blue);
+
+  a { color: var(--brand); }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .wrap {
+    max-width: var(--measure);
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  /* ---------- header ---------- */
+  .site-header {
+    background:
+      radial-gradient(120% 140% at 88% -20%, #1857c4 0%, rgba(24, 87, 196, 0) 58%),
+      linear-gradient(168deg, #0b3d91 0%, #082a66 100%);
     color: #fff;
-    padding: 48px 24px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
   }
-  header .inner {
-    max-width: 900px;
-    margin: 0 auto;
+
+  .site-header .wrap {
+    padding-block: 64px 56px;
   }
-  header h1 {
-    margin: 0 0 8px;
-    font-size: 2rem;
+
+  .eyebrow {
+    display: inline-block;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .95);
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    padding: 5px 13px;
+    margin-bottom: 20px;
   }
-  header p {
-    margin: 4px 0;
-    opacity: 0.92;
+
+  .site-header h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.85rem);
+    line-height: 1.15;
+    font-weight: 650;
+    letter-spacing: -.02em;
+    max-width: 26ch;
   }
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 32px 24px 64px;
+
+  .site-header .lede {
+    margin: 18px 0 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, .88);
+    max-width: 58ch;
   }
-  h2 {
-    color: var(--blue);
-    border-bottom: 3px solid var(--blue);
-    padding-bottom: 8px;
-    margin-top: 40px;
+
+  .byline {
+    margin: 28px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+    font-size: .95rem;
+    color: rgba(255, 255, 255, .80);
   }
+
+  .byline strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ---------- sections ---------- */
+  main .wrap { padding-block: 56px 24px; }
+
+  .section + .section { margin-top: 56px; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.32rem;
+    font-weight: 650;
+    letter-spacing: -.01em;
+    color: var(--text);
+  }
+
+  .section-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .count {
+    font-size: .85rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- lecture cards ---------- */
   .lecture-list {
     list-style: none;
+    margin: 0;
     padding: 0;
-    margin: 20px 0;
+    display: grid;
+    gap: 14px;
   }
+
   .lecture-card {
-    background: var(--card-bg);
-    border-left: 4px solid var(--blue);
-    border-radius: 6px;
-    padding: 16px 20px;
-    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
   }
-  .lecture-card .title {
-    font-weight: 600;
-    font-size: 1.05rem;
-    margin-bottom: 4px;
+
+  .lecture-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
   }
-  .lecture-card .meta {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+
+  .card-index {
+    font-size: .95rem;
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+    color: var(--brand);
+    background: var(--brand-soft);
+    border-radius: var(--radius-sm);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    letter-spacing: .01em;
   }
-  .lecture-card a {
-    display: inline-block;
-    margin-right: 16px;
-    color: var(--blue);
+
+  .card-title {
+    margin: 0;
+    font-size: 1.06rem;
+    font-weight: 620;
+    line-height: 1.4;
+    letter-spacing: -.005em;
+  }
+
+  .card-meta {
+    margin: 5px 0 0;
+    font-size: .9rem;
+    color: var(--text-muted);
+  }
+
+  .card-actions {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .9rem;
+    font-weight: 550;
+    font-family: inherit;
+    line-height: 1;
+    padding: 9px 15px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 500;
+    border: 1px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+    white-space: nowrap;
   }
-  .lecture-card a:hover {
-    text-decoration: underline;
+
+  .btn svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
   }
-  .empty-note {
-    color: var(--muted);
-    font-style: italic;
+
+  .btn-primary {
+    background: var(--brand);
+    color: var(--brand-contrast);
   }
-  footer {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 24px 48px;
-    color: var(--muted);
-    font-size: 0.85rem;
+  .btn-primary:hover { background: var(--brand-hover); }
+
+  .btn-outline {
+    border-color: var(--border-strong);
+    color: var(--text);
+    background: var(--surface);
+  }
+  .btn-outline:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  .btn-quiet {
+    color: var(--text-muted);
+    padding-inline: 10px;
+  }
+  .btn-quiet:hover { color: var(--brand); }
+
+  /* ---------- upcoming placeholder ---------- */
+  .upcoming {
+    margin-top: 14px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+    padding: 18px 24px;
+    font-size: .92rem;
+    color: var(--text-muted);
+    background: transparent;
+  }
+
+  /* ---------- prose + formats ---------- */
+  .prose p {
+    margin: 0 0 16px;
+    max-width: 68ch;
+    color: var(--text);
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+
+  .prose code {
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: .88em;
+  }
+
+  .formats {
+    list-style: none;
+    margin: 26px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .formats li {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 18px 20px;
+  }
+
+  .format-name {
+    font-weight: 620;
+    font-size: .95rem;
+    margin-bottom: 5px;
+    color: var(--text);
+  }
+
+  .formats p {
+    margin: 0;
+    max-width: none;
+    font-size: .89rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  /* ---------- footer ---------- */
+  .site-footer {
+    margin-top: 64px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .site-footer .wrap {
+    padding-block: 28px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .88rem;
+    color: var(--text-muted);
+  }
+
+  .site-footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .site-footer a:hover {
+    color: var(--brand);
+    border-bottom-color: var(--brand);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 620px) {
+    .site-header .wrap { padding-block: 44px 38px; }
+    main .wrap { padding-block: 40px 16px; }
+    .lecture-card {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 20px;
+    }
+    .card-index { width: 38px; height: 38px; font-size: .88rem; }
+    .btn { flex: 1 1 auto; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .lecture-card:hover { transform: none; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="inner">
+<header class="site-header">
+  <div class="wrap">
+    <span class="eyebrow">MS Elective &middot; SCME, NUST</span>
     <h1>PSE-823: Advanced Process Dynamics and Control</h1>
-    <p>MS elective &mdash; School of Chemical and Materials Engineering, NUST</p>
-    <p>Haider Ejaz, PhD</p>
+    <p class="lede">
+      From single-loop control to Model Predictive Control &mdash; taught through
+      live Python, with every lecture available as slides, a runnable notebook, or both.
+    </p>
+    <p class="byline"><strong>Haider Ejaz, PhD</strong> &middot; School of Chemical and Materials Engineering</p>
   </div>
 </header>
 
 <main>
-  <h2>Lectures</h2>
-  <ul class="lecture-list">
-    <li class="lecture-card">
-      <div class="title">Lecture 1 &mdash; Introductory Concepts &amp; Modeling Tools for Process Dynamics</div>
-      <div class="meta">Coughanowr &amp; LeBlanc, Chapters 1&ndash;2</div>
-      <a href="lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2_slides.slides.html">View slides</a>
-      <a href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2_colab.ipynb">Open in Colab</a>
-      <a href="lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2.ipynb">Download notebook (.ipynb)</a>
-    </li>
-  </ul>
-  <p class="empty-note">More lectures are added here as the course progresses.</p>
+  <div class="wrap">
 
-  <h2>About this course</h2>
-  <p>
-    PSE-823 bridges basic single-loop process control and Model Predictive Control (MPC),
-    with an emphasis on the economic aspects of advanced control technologies.
-    Lectures are authored as Jupyter notebooks &mdash; combining explanatory text with live
-    Python (numpy, scipy, sympy, python-control, GEKKO) &mdash; and exported to
-    self-contained reveal.js slide decks that work fully offline.
-  </p>
+    <section class="section" aria-labelledby="lectures-heading">
+      <div class="section-head">
+        <h2 id="lectures-heading">Lectures</h2>
+        <span class="rule"></span>
+        <span class="count">1 published</span>
+      </div>
+
+      <ul class="lecture-list">
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">01</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 1: </span>Introductory Concepts &amp; Modeling Tools for Process Dynamics
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc &middot; Chapters 1&ndash;2</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-quiet" href="lectures/01-intro-and-modeling/PSE-823_Lecture-01_Ch1-2.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <p class="upcoming">More lectures are added here as the course progresses.</p>
+    </section>
+
+    <section class="section prose" aria-labelledby="about-heading">
+      <div class="section-head">
+        <h2 id="about-heading">About this course</h2>
+        <span class="rule"></span>
+      </div>
+
+      <p>
+        PSE-823 bridges basic single-loop process control and Model Predictive Control (MPC),
+        with an emphasis on the economic aspects of advanced control technologies.
+        Lectures are authored as Jupyter notebooks &mdash; combining explanatory text with live
+        Python (numpy, scipy, sympy, python-control, GEKKO) &mdash; and exported to
+        self-contained reveal.js slide decks.
+      </p>
+
+      <ul class="formats">
+        <li>
+          <div class="format-name">Slides</div>
+          <p>The lecture as delivered in class. Opens in any browser and runs fully offline &mdash; no server or internet connection needed.</p>
+        </li>
+        <li>
+          <div class="format-name">Colab</div>
+          <p>The same lecture as a runnable notebook in the cloud. Nothing to install; edit the code and re-run any example yourself.</p>
+        </li>
+        <li>
+          <div class="format-name">Notebook</div>
+          <p>The raw <code>.ipynb</code> for local use in Jupyter, with every figure and code cell included.</p>
+        </li>
+      </ul>
+    </section>
+
+  </div>
 </main>
 
-<footer>
-  Source: <a href="https://github.com/haiderejaz6/ProcessControl">github.com/haiderejaz6/ProcessControl</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>PSE-823 &middot; School of Chemical and Materials Engineering, NUST</span>
+    <span>Source: <a href="https://github.com/haiderejaz6/ProcessControl">github.com/haiderejaz6/ProcessControl</a></span>
+  </div>
 </footer>
 
 </body>
