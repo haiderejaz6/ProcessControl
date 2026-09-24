@@ -14,7 +14,7 @@ Engineering, NUST), taught by Haider Ejaz.
 ├── resources.html                    # reference notes from the Instrumentation & Process Control course
 ├── course-info.html                  # syllabus, objectives, reading list
 ├── favicon.ico                       # + assets/favicon/ (SVG + PNG sizes)
-├── resources/                        # PDFs/PPTX linked from resources.html
+├── resources/                        # PDFs/PPTX + the Python primer notebook (own export_slides.sh)
 ├── tools/
 │   └── make_colab.py                 # generates the Colab variant of a lecture notebook
 ├── assets/                           # shared, reused across every lecture
@@ -30,6 +30,13 @@ Engineering, NUST), taught by Haider Ejaz.
         ├── build_notebook.py        # generates the .ipynb — edit this to revise content
         └── export_slides.sh         # rebuild + re-export pipeline (see below)
 ```
+
+## Presentation mode
+
+Every notebook on the site (lectures, derivations, Python primer) has a reveal.js
+slide deck next to it, linked as **View slides**. Each folder's export script
+rebuilds it. The primer's script executes a throwaway copy so its deck shows
+outputs while the notebook itself stays unexecuted for live RISE use.
 
 ## Format
 
