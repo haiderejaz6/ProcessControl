@@ -31,12 +31,25 @@ Engineering, NUST), taught by Haider Ejaz.
         └── export_slides.sh         # rebuild + re-export pipeline (see below)
 ```
 
-## Presentation mode
+## Presentation mode (Binder + RISE)
 
-Every notebook on the site (lectures, derivations, Python primer) has a reveal.js
-slide deck next to it, linked as **View slides**. Each folder's export script
-rebuilds it. The primer's script executes a throwaway copy so its deck shows
-outputs while the notebook itself stays unexecuted for live RISE use.
+Every notebook on the site (lectures, derivations, Python primer) can be presented
+as live slides. Its **Open in Binder** link launches the repo on mybinder.org straight
+into that file in the classic Jupyter Notebook interface, with a live kernel. Click the
+toolbar's slideshow icon (or press `Alt+R`) to enter/exit presentation mode; cells can
+be run and edited during the show.
+
+This is the same setup as the ChEProgDataSci course repo: `requirements.txt` and
+`runtime.txt` pin the environment Binder builds (`notebook==6.5.7` + `rise==5.7.1`,
+because RISE's slideshow button only ships for the classic notebook UI, plus the
+packages the notebooks import). RISE reads the same `slideshow.slide_type` cell
+metadata that the static exports use. Links must use `urlpath=notebooks%2F<path>`
+(not `lab/tree/`, which has no RISE). If a notebook imports a new package, add it to
+`requirements.txt`; Binder only rebuilds the image when that file changes.
+
+The static reveal.js decks (**View slides**) remain for offline viewing; each folder's
+export script rebuilds them. The primer's script executes a throwaway copy so its deck
+shows outputs while the notebook itself stays unexecuted for live use.
 
 ## Format
 
