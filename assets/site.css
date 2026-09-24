@@ -532,7 +532,7 @@ main .wrap { padding-block: 40px 16px; }
   border-radius: var(--radius);
   padding: 14px 16px;
   font-size: .92rem;
-  margin-bottom: 28px;
+  margin: 40px 0 28px;
 }
 .note svg { width: 20px; height: 20px; flex: none; margin-top: 2px; color: var(--brand); }
 .note p { margin: 0; }
