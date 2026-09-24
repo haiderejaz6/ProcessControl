@@ -10,6 +10,11 @@ Engineering, NUST), taught by Haider Ejaz.
 ```
 .
 ├── index.html                        # GitHub Pages landing page — lists all lectures
+├── derivations.html                  # companion derivation notebooks
+├── resources.html                    # reference notes from the Instrumentation & Process Control course
+├── course-info.html                  # syllabus, objectives, reading list
+├── favicon.ico                       # + assets/favicon/ (SVG + PNG sizes)
+├── resources/                        # PDFs/PPTX linked from resources.html
 ├── tools/
 │   └── make_colab.py                 # generates the Colab variant of a lecture notebook
 ├── assets/                           # shared, reused across every lecture
@@ -52,7 +57,7 @@ the slide-deck structure:
    notebook, executes every code cell, exports to reveal.js, and points the
    deck at the shared `../../assets/` folder (reveal.js/MathJax/theme are
    **not** duplicated per lecture — every lecture references the same copy).
-4. Add a card for it in the root `index.html`, including its Colab link:
+4. Add a card for it in the root `index.html` (and its companion in `derivations.html`), including its Colab link:
    `https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/NN-topic-name/<notebook>_colab.ipynb`
 5. Commit and push — GitHub Pages picks up the change automatically.
 

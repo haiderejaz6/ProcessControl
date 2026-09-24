@@ -2,34 +2,61 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b3d91">
 <meta name="description" content="PSE-823: Advanced Process Dynamics and Control — MS elective at SCME, NUST. Lecture slides, Colab notebooks and course materials.">
 <title>PSE-823: Advanced Process Dynamics and Control</title>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/favicon/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="PSE-823 home">
+      <img src="assets/favicon/icon-192.png" alt="" width="30" height="30">
+      <span>PSE-823</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Lectures</a>
+      <a href="derivations.html">Derivations</a>
+      <a href="resources.html">Resources</a>
+      <a href="course-info.html">Course info</a>
+    </nav>
+  </div>
+</header>
+
+<header class="hero hero-lg">
   <div class="wrap">
     <span class="eyebrow">MS Elective &middot; SCME, NUST</span>
-    <h1>PSE-823: Advanced Process Dynamics and Control</h1>
-    <p class="lede">
-      From single-loop control to Model Predictive Control &mdash; taught through
-      live Python, with every lecture available as slides, a runnable notebook, or both.
-    </p>
+    <h1>Advanced Process Dynamics and Control</h1>
+    <p class="lede">From single-loop control to Model Predictive Control &mdash; taught through live Python, with every lecture available as slides, a runnable notebook, or both.</p>
+    <div class="hero-actions">
+      <a class="btn btn-hero" href="#lectures"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg> Browse lectures</a>
+      <a class="btn btn-ghost" href="course-info.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> Course info</a>
+    </div>
+    <ul class="facts" aria-label="Course facts">
+      <li><b>3</b> credit hours</li>
+      <li><b>3</b> lectures published</li>
+      <li>Slides &middot; Colab &middot; Binder</li>
+    </ul>
     <p class="byline"><strong>Haider Ejaz, PhD</strong> &middot; School of Chemical and Materials Engineering</p>
   </div>
 </header>
 
-<main>
+<main id="main">
   <div class="wrap">
 
-    <section class="section" aria-labelledby="lectures-heading">
+    <section class="section" id="lectures" aria-labelledby="lectures-heading">
       <div class="section-head">
         <h2 id="lectures-heading">Lectures</h2>
         <span class="rule"></span>
-        <span class="count">2 published</span>
+        <span class="count">3 published</span>
       </div>
 
       <ul class="lecture-list">
@@ -87,26 +114,61 @@
             </div>
           </div>
         </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">03</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 3: </span>First-Order Systems, by Simulation
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc &middot; Chapters 4&ndash;6</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/03-first-order-systems/PSE-823_Lecture-03_First-Order-Systems_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/03-first-order-systems/PSE-823_Lecture-03_First-Order-Systems_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=lab%2Ftree%2Flectures%2F03-first-order-systems%2FPSE-823_Lecture-03_First-Order-Systems.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/03-first-order-systems/PSE-823_Lecture-03_First-Order-Systems.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
       </ul>
 
       <p class="upcoming">More lectures are added here as the course progresses.</p>
     </section>
 
-    <section class="section" aria-labelledby="derivations-heading">
+    <section class="section" aria-labelledby="more-heading">
       <div class="section-head">
-        <h2 id="derivations-heading">Derivations &amp; Companion Notebooks</h2>
+        <h2 id="more-heading">Study materials</h2>
         <span class="rule"></span>
       </div>
 
-      <div class="link-card">
-        <div>
-          <h3>Full worked derivations for every lecture</h3>
-          <p>Fuller reasoning and algebra than fits on a slide, for self-study alongside each lecture &mdash; not for classroom delivery.</p>
+      <div class="link-grid">
+        <div class="link-card">
+          <div>
+            <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 7V5H6l6 7-6 7h12v-2"/></svg></div>
+            <h3>Worked derivations</h3>
+            <p>Fuller reasoning and algebra than fits on a slide, for self-study alongside each lecture.</p>
+          </div>
+          <a class="btn btn-primary" href="derivations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> View derivations</a>
         </div>
-        <a class="btn btn-primary" href="derivations.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          View derivations
-        </a>
+        <div class="link-card">
+          <div>
+            <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            <h3>Reference lecture notes</h3>
+            <p>Slides from the earlier Instrumentation and Process Control course, for background and revision.</p>
+          </div>
+          <a class="btn btn-primary" href="resources.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Open resources</a>
+        </div>
       </div>
     </section>
 
@@ -121,7 +183,8 @@
         with an emphasis on the economic aspects of advanced control technologies.
         Lectures are authored as Jupyter notebooks &mdash; combining explanatory text with live
         Python (numpy, scipy, sympy, python-control, GEKKO) &mdash; and exported to
-        self-contained reveal.js slide decks.
+        self-contained reveal.js slide decks. The syllabus, objectives and reading list are on the
+        <a href="course-info.html">course info page</a>.
       </p>
 
       <ul class="formats">
