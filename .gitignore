@@ -1,0 +1,6 @@
+# Private textbook chapter reader output (copyrighted text) -- never commit
+chapters/
+
+# notebook checkpoints / caches
+.ipynb_checkpoints/
+__pycache__/

@@ -7558,54 +7558,76 @@ main {
   color: #e8edf8 !important;
 }
 
+/* ---- nbconvert (JupyterLab template) decks at 1024x768, 4:3 ----
+   Sized in px because the slide is laid out at 1024x768 and then scaled. */
+.reveal .jp-InputPrompt,
+.reveal .jp-OutputPrompt { display: none; }
+.reveal .jp-Cell { padding: 2px 0; }
+.reveal .jp-InputArea-editor,
+.reveal .jp-CodeMirrorEditor { border-left: 4px solid #0b3d91; }
+.reveal .jp-CodeMirrorEditor pre,
+.reveal .jp-InputArea pre,
+.reveal .jp-RenderedText pre,
+.reveal .jp-OutputArea pre {
+  font-size: 16px;
+  line-height: 1.3;
+  max-height: none;
+  margin: 0;
+  padding: 8px 12px;
+}
+.reveal .jp-OutputArea pre { border-left: 0; background: #ffffff; }
+.reveal .jp-RenderedImage img,
+.reveal .jp-OutputArea img {
+  max-height: 300px;
+  width: auto;
+  box-shadow: none;
+  margin: 4px auto;
+}
+.reveal .jp-RenderedMarkdown p,
+.reveal .jp-RenderedMarkdown li { font-size: 22px; }
+.reveal .jp-RenderedMarkdown h3 { font-size: 30px; margin: 0 0 12px; }
+.reveal .jp-RenderedMarkdown h2 { font-size: 38px; }
+.reveal .jp-RenderedMarkdown h1 { font-size: 44px; }
+.reveal .jp-RenderedMarkdown pre code { font-size: 17px; }
+.reveal .jp-RenderedMarkdown img { max-height: 300px; }
+.reveal .jp-RenderedMarkdown .MathJax_Display { margin: 8px 0 !important; }
+/* a slide that is still too tall scrolls instead of being cut off */
+.reveal .slides section > section.present,
+.reveal .slides > section.present:not(.stack) {
+  height: 100%;
+  overflow-y: auto;
+}
+
 </style>
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=807c1de5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58856594">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="PSE-823-Lecture-2----Full-Worked-Derivations-(Companion)">PSE-823 Lecture 2 -- Full Worked Derivations (Companion)<a class="anchor-link" href="#PSE-823-Lecture-2----Full-Worked-Derivations-(Companion)">¶</a></h1><p>Companion to <code>PSE-823_Lecture2_modeling-laplace.ipynb</code>. All numbers are lifted directly from Coughanowr &amp; LeBlanc Ch. 2-3 (Problem 2.9, Examples 3.1/3.2/3.4/3.5).</p>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0201a59d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Part-A----Your-Turn,-full-derivation-(Problem-2.9-setup)">Part A -- Your Turn, full derivation (Problem 2.9 setup)<a class="anchor-link" href="#Part-A----Your-Turn,-full-derivation-(Problem-2.9-setup)">¶</a></h2>
+<h1 id="PSE-823:-Advanced-Process-Dynamics-and-Control">PSE-823: Advanced Process Dynamics and Control<a class="anchor-link" href="#PSE-823:-Advanced-Process-Dynamics-and-Control">¶</a></h1><h2 id="Lecture-2-Companion----Full-Derivations-and-Worked-Answers">Lecture 2 Companion -- Full Derivations and Worked Answers<a class="anchor-link" href="#Lecture-2-Companion----Full-Derivations-and-Worked-Answers">¶</a></h2><h3 id="(Coughanowr-&amp;-LeBlanc,-Ch.-2-3)">(Coughanowr &amp; LeBlanc, Ch. 2-3)<a class="anchor-link" href="#(Coughanowr-&amp;-LeBlanc,-Ch.-2-3)">¶</a></h3>
 </div>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=caeb54b6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae51d53e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Original steady state: $v_1=10$, $v_2=20$ L/min, $C_a(0)=3$ g/L, $V=150$ L.</p>
-<p>At 3:00 PM, stream 1 increases to $20$ L/min; stream 2 and stream 1's concentration unchanged.</p>
-<p><strong>New total flow:</strong> $v_3=v_1+v_2=20+20=40$ L/min (different from the book's own scenario, where $v_3$ stayed at 30 throughout).</p>
-<p><strong>New steady-state feed concentration:</strong>
-$$C_{a3,new}=\frac{(20)(1)+(20)(4)}{40}=\frac{100}{40}=2.5\ \text{g/L}$$</p>
-<p><strong>New residence time:</strong>
-$$\tau_{new}=\frac{V}{v_3}=\frac{150}{40}=3.75\ \text{min}$$</p>
-<p><strong>ODE and transform:</strong>
-$$3.75\frac{dC_a}{dt}+C_a=2.5,\quad C_a(0)=3$$
-$$C_a(s)=\frac{2.5}{s(3.75s+1)}+\frac{11.25}{3.75s+1}$$</p>
+<h3 id="Setup-(run-once)">Setup (run once)<a class="anchor-link" href="#Setup-(run-once)">¶</a></h3><ul>
+<li>Imports used below</li>
+</ul>
 </div>
 </div>
 </div>
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=660ebe54">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_setup" id="cell-id=62cb0542">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7613,65 +7635,55 @@ $$C_a(s)=\frac{2.5}{s(3.75s+1)}+\frac{11.25}{3.75s+1}$$</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'t s'</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">Ca</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s1">'C_a'</span><span class="p">)</span>
-<span class="n">ode</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ca</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ca</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">ode</span><span class="p">,</span> <span class="n">Ca</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">ics</span><span class="o">=</span><span class="p">{</span><span class="n">Ca</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="mi">3</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
-
-<span class="n">Ca_s</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">laplace_transform</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">noconds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">Ca_s</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"t s"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Eq(C_a(t), 5/2 + exp(-4*t/15)/2)
-5*(9*s + 2)/(s*(15*s + 4))
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2879f74e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f031aa8c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Part-B----Your-Turn,-full-derivation-(Problem-2.9-inversion)">Part B -- Your Turn, full derivation (Problem 2.9 inversion)<a class="anchor-link" href="#Part-B----Your-Turn,-full-derivation-(Problem-2.9-inversion)">¶</a></h2>
+<h2 id="Part-A">Part A<a class="anchor-link" href="#Part-A">¶</a></h2><h3 id="Mixing-Scenario:-Separation-of-Variables-and-Prob.-2.9">Mixing Scenario: Separation of Variables and Prob. 2.9<a class="anchor-link" href="#Mixing-Scenario:-Separation-of-Variables-and-Prob.-2.9">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 2, Sec. 2.1)</p>
+<!-- source: coughanowr-ch2 -->
 </div>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f9dbfe5c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d36ac2dd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Convert to standard $(s+a)$ form: $3.75s+1=3.75(s+0.2\overline{6})$, where $0.2\overline{6}=1/3.75=4/15$.</p>
-<p><strong>First term:</strong>
-$$\frac{2.5}{s(3.75s+1)}=\frac{0.6\overline{6}}{s(s+0.2\overline{6})}=\frac{A}{s}+\frac{B}{s+0.2\overline{6}}$$
-Cover-up: $A=2.5$, $B=-2.5$</p>
-<p><strong>Second term:</strong> $\frac{11.25}{3.75(s+0.2\overline{6})}=\frac{3}{s+0.2\overline{6}}$</p>
-<p><strong>Sum:</strong>
-$$C_a(s)=\frac{2.5}{s}+\frac{0.5}{s+0.2\overline{6}} \;\Rightarrow\; C_a(t)=2.5+0.5e^{-t/3.75}\ \text{g/L}$$</p>
-<p><strong>Self-check:</strong> $t=0$: $2.5+0.5=3$ (matches IC). $t\to\infty$: $C_a\to2.5$ (matches Part A's new steady state).</p>
+<h3 id="Eq.-2.2-by-separation">Eq. 2.2 by separation<a class="anchor-link" href="#Eq.-2.2-by-separation">¶</a></h3><p>$5\,dC_a/dt = 2 - C_a$. Separate: $\frac{dC_a}{2 - C_a} = \frac{dt}{5}$.
+Integrate from $(0, 3)$: $-\ln(2 - C_a)\big|_3^{C_a} = t/5$, so
+$\ln\frac{2 - C_a}{2 - 3} = -t/5$, i.e. $C_a - 2 = e^{-t/5}$.</p>
+<h3 id="Prob.-2.9-(stream-1-raised-to-20-L/min)">Prob. 2.9 (stream 1 raised to 20 L/min)<a class="anchor-link" href="#Prob.-2.9-(stream-1-raised-to-20-L/min)">¶</a></h3><p>$v_3 = 40$ L/min, $C_{a3} = (20 + 80)/40 = 2.5$ g/L,
+$\tau = 150/40 = 3.75$ min. With $C_a(0) = 3$:
+$3.75\,dC_a/dt + C_a = 2.5$, so $C_a = 2.5 + 0.5e^{-t/3.75}$.</p>
 </div>
 </div>
 </div>
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6d5e8733">
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f3975fd9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----Prob.-2.9-by-dsolve">Check -- Prob. 2.9 by dsolve<a class="anchor-link" href="#Check----Prob.-2.9-by-dsolve">¶</a></h3><ul>
+<li>The same ODE with the new $\tau$ and inlet</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2dd2393">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7679,13 +7691,10 @@ $$C_a(s)=\frac{2.5}{s}+\frac{0.5}{s+0.2\overline{6}} \;\Rightarrow\; C_a(t)=2.5+
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'s t'</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">Ca_s</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> \
-       <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">apart</span><span class="p">(</span><span class="n">Ca_s</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">inverse_laplace_transform</span><span class="p">(</span><span class="n">Ca_s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">"C"</span><span class="p">)</span>
+<span class="n">ode</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">C</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>
+            <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">ode</span><span class="p">,</span> <span class="n">C</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">ics</span><span class="o">=</span><span class="p">{</span><span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="mi">3</span><span class="p">})</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7698,34 +7707,300 @@ $$C_a(s)=\frac{2.5}{s}+\frac{0.5}{s+0.2\overline{6}} \;\Rightarrow\; C_a(t)=2.5+
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>15/(2*(15*s + 4)) + 5/(2*s)
-5/2 + exp(-4*t/15)/2
+<pre>5/2 + exp(-4*t/15)/2
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=288e92d7">
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f108179f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> Rational numbers keep the result exact: 15/4 = 3.75 and 5/2 = 2.5.
+<code>dsolve</code> returns 5/2 + exp(-4 t/15)/2, i.e. 2.5 + 0.5 e^(-t/3.75).</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c43d155">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Reference----the-book's-own-worked-examples,-full-detail">Reference -- the book's own worked examples, full detail<a class="anchor-link" href="#Reference----the-book's-own-worked-examples,-full-detail">¶</a></h2>
+<h2 id="Part-B">Part B<a class="anchor-link" href="#Part-B">¶</a></h2><h3 id="Energy-Balance:-Where-the-Reference-Temperature-Goes">Energy Balance: Where the Reference Temperature Goes<a class="anchor-link" href="#Energy-Balance:-Where-the-Reference-Temperature-Goes">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 2, Sec. 2.1)</p>
+<!-- source: coughanowr-ch2 -->
 </div>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=29366cb5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58911402">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Example 3.1 (basic):</strong> $x(s)=\frac{1}{s(s+1)}=\frac{1}{s}-\frac{1}{s+1} \Rightarrow x(t)=1-e^{-t}$</p>
-<p><strong>Example 3.4 (complex roots):</strong> $x(s)=\frac{2}{s(s^2+2s+2)}$. $x(s)=\frac{1}{s}-\frac{s+2}{s^2+2s+2}$. Complete the square: $s^2+2s+2=(s+1)^2+1$. Regroup: $x(s)=\frac{1}{s}-\frac{(s+1)+1}{(s+1)^2+1^2}$. Invert with $\mathcal{L}\{e^{-at}\cos kt\}=\frac{s+a}{(s+a)^2+k^2}$, $\mathcal{L}\{e^{-at}\sin kt\}=\frac{k}{(s+a)^2+k^2}$: $x(t)=1-e^{-t}(\cos t+\sin t)$.</p>
-<p><strong>Example 3.5 (repeated roots):</strong> $x(s)=\frac{1}{s(s+1)^3}$. Setup: $x(s)=\frac{A}{s}+\frac{B}{(s+1)^3}+\frac{C}{(s+1)^2}+\frac{D}{s+1}$. Cover-up: $A=1$, $B=-1$. Matching coefficients: $1+D=0$, $3+C+2D=0$, $2+C+D=0 \Rightarrow D=-1$, $C=-1$. Final: $x(t)=1-e^{-t}(\frac{t^2}{2}+t+1)$.</p>
+<h3 id="Tee">Tee<a class="anchor-link" href="#Tee">¶</a></h3><p>$\rho v_1C_p(T_1 - T_{ref}) + \rho v_2C_p(T_2 - T_{ref}) =
+\rho v_3C_p(T_3 - T_{ref})$. Since $v_1 + v_2 = v_3$, the $T_{ref}$
+terms cancel: $v_1T_1 + v_2T_2 = v_3T_3$.</p>
+<h3 id="Vessel">Vessel<a class="anchor-link" href="#Vessel">¶</a></h3><p>$\rho v_3C_p(T_3 - T_{ref}) - \rho v_3C_p(T - T_{ref}) + Q =
+\frac{d}{dt}[\rho VC_p(T - T_{ref})]$. Constant $\rho, V, C_p$:
+divide by $\rho v_3C_p$ to get Eq. 2.3,
+$\tau\,dT/dt + T = T_3 + Q/(\rho v_3C_p)$, $\tau = V/v_3$.</p>
+<h3 id="Prob.-2.9,-energy-part">Prob. 2.9, energy part<a class="anchor-link" href="#Prob.-2.9,-energy-part">¶</a></h3><p>$T_3 = (500 + 1100)/40 = 40$ C, $\tau = 3.75$ min,
+$Q/(\rho v_3C_p) = 1.05\times10^6/40000 = 26.25$ C, final $T = 66.25$ C,
+$T(t) = 66.25 + 13.75\,e^{-t/3.75}$.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bdf6db11">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----the-reference-temperature-drops-out">Check -- the reference temperature drops out<a class="anchor-link" href="#Check----the-reference-temperature-drops-out">¶</a></h3><ul>
+<li>Keep $T_{ref}$ symbolic and simplify</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=123638c7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">,</span> <span class="n">T3</span><span class="p">,</span> <span class="n">Tr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"v1 v2 T1 T2 T3 T_ref"</span><span class="p">)</span>
+<span class="n">tee</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">v1</span><span class="o">*</span><span class="p">(</span><span class="n">T1</span> <span class="o">-</span> <span class="n">Tr</span><span class="p">)</span> <span class="o">+</span> <span class="n">v2</span><span class="o">*</span><span class="p">(</span><span class="n">T2</span> <span class="o">-</span> <span class="n">Tr</span><span class="p">),</span> <span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">T3</span> <span class="o">-</span> <span class="n">Tr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">tee</span><span class="p">,</span> <span class="n">T3</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>(T1*v1 + T2*v2)/(v1 + v2)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40dbb170">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> The tee balance is typed with T_ref everywhere and v3 = v1 + v2. Solving
+for T3 gives (T1 v1 + T2 v2)/(v1 + v2): T_ref has vanished, as the book
+states.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=86292e6e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Part-C">Part C<a class="anchor-link" href="#Part-C">¶</a></h2><h3 id="The-Derivative-Rule,-Proved">The Derivative Rule, Proved<a class="anchor-link" href="#The-Derivative-Rule,-Proved">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 2, Sec. 2.2)</p>
+<!-- source: coughanowr-ch2 -->
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50f7535e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Eq.-2.6-by-parts">Eq. 2.6 by parts<a class="anchor-link" href="#Eq.-2.6-by-parts">¶</a></h3><p>$\int_0^\infty f'(t)e^{-st}dt$ with $u = e^{-st}$, $dv = f'dt$,
+$du = -se^{-st}dt$, $v = f$:
+$= [fe^{-st}]_0^\infty + s\int_0^\infty fe^{-st}dt = -f(0) + sF(s)$.
+Applied twice: $\mathcal{L}\{f''\} = s^2F - sf(0) - f'(0)$.</p>
+<h3 id="Ex.-2.4">Ex. 2.4<a class="anchor-link" href="#Ex.-2.4">¶</a></h3><p>$sx - 2 + 3x = 0 \Rightarrow x(s) = 2/(s+3) \Rightarrow x(t) = 2e^{-3t}$.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4368d779">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----second-derivative-rule">Check -- second-derivative rule<a class="anchor-link" href="#Check----second-derivative-rule">¶</a></h3><ul>
+<li>Same test as in the lecture, one order higher</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cab2c1f1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">laplace_transform</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">noconds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lhs</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">laplace_transform</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">noconds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rhs</span> <span class="o">=</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">F</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">lhs</span> <span class="o">-</span> <span class="n">rhs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aa4da107">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> f(0) = 1 and f'(0) = 0 for this test function; the difference between
+the direct transform of f'' and s^2 F - s f(0) - f'(0) simplifies to 0.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ec3974d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Part-D">Part D<a class="anchor-link" href="#Part-D">¶</a></h2><h3 id="Partial-Fractions-in-Full">Partial Fractions in Full<a class="anchor-link" href="#Partial-Fractions-in-Full">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 3, Sec. 3.1)</p>
+<!-- source: coughanowr-ch3 -->
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75bfe9b2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Ex.-3.3-cover-up-table">Ex. 3.3 cover-up table<a class="anchor-link" href="#Ex.-3.3-cover-up-table">¶</a></h3><p>$x(s) = \frac{s^4 - 6s^2 + 9s - 8}{s(s-2)(s+1)(s+2)(s-1)}$.
+Cover each factor and set $s$ to its root:
+$A = \frac{-8}{(-2)(1)(2)(-1)} = -2$,
+$B = \frac{16 - 24 + 18 - 8}{(2)(3)(4)(1)} = \frac{1}{12}$,
+$C = \frac{1 - 6 - 9 - 8}{(-1)(-3)(1)(-2)} = \frac{11}{3}$,
+$D = \frac{16 - 24 - 18 - 8}{(-2)(-4)(-1)(-3)} = -\frac{17}{12}$,
+$E = \frac{1 - 6 + 9 - 8}{(1)(-1)(2)(3)} = \frac{2}{3}$.</p>
+<h3 id="Ex.-3.5-coefficient-matching">Ex. 3.5 coefficient matching<a class="anchor-link" href="#Ex.-3.5-coefficient-matching">¶</a></h3><p>With $A = 1$, $B = -1$: $1 = (1 + D)s^3 + (3 + C + 2D)s^2 +
+(2 + C + D)s + 1$, so $D = -1$, $C = -1$.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e364e5f0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----cover-up-as-a-limit">Check -- cover-up as a limit<a class="anchor-link" href="#Check----cover-up-as-a-limit">¶</a></h3><ul>
+<li>Cover-up = multiply by the factor, then let $s$ go to the root</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b4f0962f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">X3</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">6</span><span class="o">*</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="n">s</span> <span class="o">-</span> <span class="mi">8</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">X3</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">root</span><span class="p">),</span> <span class="n">s</span><span class="p">,</span> <span class="n">root</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0 -2
+2 1/12
+-1 11/3
+-2 -17/12
+1 2/3
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eabda21e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> Multiplying by (s - root) cancels that factor; the limit evaluates the
+rest at the root -- the cover-up rule written as calculus. Prints -2,
+1/12, 11/3, -17/12, 2/3, the five coefficients in the book.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9f78358">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Prob.-2.9-inverted-(Lecture-Your-Turn-D)">Prob. 2.9 inverted (Lecture Your Turn D)<a class="anchor-link" href="#Prob.-2.9-inverted-(Lecture-Your-Turn-D)">¶</a></h3><p>$3.75s + 1 = 3.75(s + 0.2667)$. First term:
+$\frac{2.5/3.75}{s(s + 0.2667)} = \frac{2.5}{s} - \frac{2.5}{s + 0.2667}$.
+Second term: $\frac{11.25/3.75}{s + 0.2667} = \frac{3}{s + 0.2667}$.
+Sum $\frac{2.5}{s} + \frac{0.5}{s + 0.2667}$, so
+$C_a(t) = 2.5 + 0.5e^{-t/3.75}$, matching Part A.</p>
 </div>
 </div>
 </div>
@@ -7742,18 +8017,18 @@ $$C_a(s)=\frac{2.5}{s}+\frac{0.5}{s+0.2\overline{6}} \;\Rightarrow\; C_a(t)=2.5+
         progress: true,
         history: true,
         transition: "slide",
-        slideNumber: "",
+        slideNumber: "c/t",
         plugins: [RevealNotes],
-        width: 960,
-        height: 700,
+        width: 1024,
+        height: 768,
+        margin: 0.04,
+        center: false,
     });
-
-    var update = function(event){
-      if (window.MathJax && MathJax.Hub && MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+    Reveal.addEventListener('slidechanged', function () {
+      if (window.MathJax && MathJax.Hub &&
+          MathJax.Hub.getAllJax(Reveal.getCurrentSlide())) {
         MathJax.Hub.Rerender(Reveal.getCurrentSlide());
       }
-    };
-
-    Reveal.addEventListener('slidechanged', update);
+    });
 </script>
 </html>

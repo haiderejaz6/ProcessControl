@@ -31,14 +31,24 @@ import uuid
 
 DEFAULT_BASE_URL = "https://haiderejaz6.github.io/ProcessControl"
 
-# Preinstalled on Colab: numpy, scipy, sympy, matplotlib. Not preinstalled:
-DEFAULT_PIP = ["control"]
+# Preinstalled on Colab: numpy, scipy, sympy, matplotlib, pandas, scikit-learn.
+# Not preinstalled -- installed only when a code cell imports them:
+OPTIONAL_PIP = {"control": "control", "pysindy": "pysindy", "gekko": "gekko"}
+
+
+def detect_pip(cells):
+    """Packages Colab lacks that this notebook actually imports."""
+    code = "\n".join("".join(c["source"]) for c in cells
+                     if c["cell_type"] == "code")
+    return [pkg for mod, pkg in OPTIONAL_PIP.items()
+            if re.search(rf"^\s*(import|from)\s+{mod}\b", code, re.M)]
 
 SETUP_MARKDOWN = """\
 ### Colab setup
 
 Run the cell below first. It installs the packages Colab does not ship with
-(`numpy`, `scipy`, `sympy` and `matplotlib` are already there). Figures are
+(`numpy`, `scipy`, `sympy`, `matplotlib`, `pandas` and `scikit-learn` are
+already there). Figures are
 loaded from the course site, so this notebook needs a network connection --
 the copy in the repo is the one to use offline.
 """
@@ -78,11 +88,10 @@ def main():
     ap.add_argument("--pip", action="append", default=None,
                     help="package to install in the setup cell (repeatable)")
     ap.add_argument("--strip-notes", action="store_true",
-                    help="drop cells tagged slide_type=notes, i.e. the instructor "
-                         "answer keys, to make a student-facing copy")
+                    help="drop the instructor notes and answer keys (slide_type=notes, "
+                         "except code walkthroughs) to make a student copy")
     args = ap.parse_args()
 
-    pip_pkgs = args.pip if args.pip is not None else DEFAULT_PIP
 
     root = repo_root(args.notebook)
     if root is None:
@@ -96,8 +105,11 @@ def main():
     cells = nb["cells"]
     if args.strip_notes:
         before = len(cells)
-        cells = [c for c in cells
-                 if c.get("metadata", {}).get("slideshow", {}).get("slide_type") != "notes"]
+        def is_key(c):                   # answer keys and instructor notes;
+            md = c.get("metadata", {})   # code walkthroughs stay
+            return (md.get("slideshow", {}).get("slide_type") == "notes"
+                    and "walkthrough" not in md.get("tags", []))
+        cells = [c for c in cells if not is_key(c)]
         print(f"   stripped {before - len(cells)} instructor-notes cell(s)")
 
     rewritten = 0
@@ -110,12 +122,13 @@ def main():
             c["source"] = new.splitlines(keepends=True)
             rewritten += 1
 
+    pip_pkgs = args.pip if args.pip is not None else detect_pip(cells)
     install = " ".join(pip_pkgs)
     # nbformat >= 4.5 requires a unique id on every cell.
     def cell_id():
         return uuid.uuid4().hex[:8]
 
-    setup = [
+    setup = [] if not pip_pkgs else [
         {"cell_type": "markdown", "id": cell_id(),
          "metadata": {"slideshow": {"slide_type": "skip"}},
          "source": SETUP_MARKDOWN.splitlines(keepends=True)},

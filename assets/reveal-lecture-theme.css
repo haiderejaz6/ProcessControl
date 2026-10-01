@@ -126,3 +126,43 @@
 .reveal .slides section div[style*="background: #0b3d91"] p {
   color: #e8edf8 !important;
 }
+
+/* ---- nbconvert (JupyterLab template) decks at 1024x768, 4:3 ----
+   Sized in px because the slide is laid out at 1024x768 and then scaled. */
+.reveal .jp-InputPrompt,
+.reveal .jp-OutputPrompt { display: none; }
+.reveal .jp-Cell { padding: 2px 0; }
+.reveal .jp-InputArea-editor,
+.reveal .jp-CodeMirrorEditor { border-left: 4px solid #0b3d91; }
+.reveal .jp-CodeMirrorEditor pre,
+.reveal .jp-InputArea pre,
+.reveal .jp-RenderedText pre,
+.reveal .jp-OutputArea pre {
+  font-size: 16px;
+  line-height: 1.3;
+  max-height: none;
+  margin: 0;
+  padding: 8px 12px;
+}
+.reveal .jp-OutputArea pre { border-left: 0; background: #ffffff; }
+.reveal .jp-RenderedImage img,
+.reveal .jp-OutputArea img {
+  max-height: 300px;
+  width: auto;
+  box-shadow: none;
+  margin: 4px auto;
+}
+.reveal .jp-RenderedMarkdown p,
+.reveal .jp-RenderedMarkdown li { font-size: 22px; }
+.reveal .jp-RenderedMarkdown h3 { font-size: 30px; margin: 0 0 12px; }
+.reveal .jp-RenderedMarkdown h2 { font-size: 38px; }
+.reveal .jp-RenderedMarkdown h1 { font-size: 44px; }
+.reveal .jp-RenderedMarkdown pre code { font-size: 17px; }
+.reveal .jp-RenderedMarkdown img { max-height: 300px; }
+.reveal .jp-RenderedMarkdown .MathJax_Display { margin: 8px 0 !important; }
+/* a slide that is still too tall scrolls instead of being cut off */
+.reveal .slides section > section.present,
+.reveal .slides > section.present:not(.stack) {
+  height: 100%;
+  overflow-y: auto;
+}

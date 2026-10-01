@@ -9,110 +9,133 @@ Engineering, NUST), taught by Haider Ejaz.
 
 ```
 .
-├── index.html                        # GitHub Pages landing page — lists all lectures
-├── derivations.html                  # companion derivation notebooks
-├── resources.html                    # reference notes from the Instrumentation & Process Control course
-├── course-info.html                  # syllabus, objectives, reading list
-├── favicon.ico                       # + assets/favicon/ (SVG + PNG sizes)
-├── resources/                        # PDFs/PPTX + the Python primer notebook (own export_slides.sh)
+├── index.html                  # landing page: lecture cards (generated between markers)
+├── derivations.html            # companion derivation notebooks (generated between markers)
+├── chapters.html               # textbook chapter list + private reader links (generated)
+├── resources.html              # reference notes from the Instrumentation & Process Control course
+├── course-info.html            # syllabus, objectives, reading list
+├── REVISION_PLAN.md            # the derive-then-code revision plan and its status
+├── requirements.txt, runtime.txt   # the Binder environment
+├── resources/                  # PDFs/PPTX + the Python primer notebook (own export_slides.sh)
+├── assets/                     # shared by every deck: local reveal.js, pruned MathJax,
+│                               #   reveal-lecture-theme.css, site.css
 ├── tools/
-│   └── make_colab.py                 # generates the Colab variant of a lecture notebook
-├── assets/                           # shared, reused across every lecture
-│   ├── reveal.js/                    # local reveal.js (no CDN dependency)
-│   ├── mathjax/                      # pruned local MathJax build (TeX font, English)
-│   └── reveal-lecture-theme.css      # visual theme (matches the course's Marp theme)
+│   ├── lecture_kit.py          # Deck: the builder every build script uses
+│   ├── check_lecture.py        # format linter (run on every export)
+│   ├── run_lecture.py          # execute a notebook; clear `predict` cells
+│   ├── export_lecture.sh       # lint -> execute -> reveal.js -> localize -> Colab copy
+│   ├── localize_slides.py      # point a deck at assets/, drop CDNs, inject the theme
+│   ├── check_slides.py         # Playwright: flag slides that overflow 1024x768
+│   ├── make_colab.py           # the "Open in Colab" variant
+│   ├── site_data.py            # lecture and chapter lists (single source for the site)
+│   ├── build_site.py           # regenerates the cards, nav and chapters.html
+│   └── build_chapters.py       # renders the private chapter reader (see below)
+├── chapters/                   # PRIVATE, git-ignored: rendered textbook chapters
 └── lectures/
-    └── 01-intro-and-modeling/
-        ├── PSE-823_Lecture-01_Ch1-2.ipynb          # the lecture, as a notebook
-        ├── PSE-823_Lecture-01_Ch1-2_colab.ipynb    # generated — the "Open in Colab" copy
-        ├── PSE-823_Lecture-01_Ch1-2_slides.slides.html   # exported slide deck
-        ├── images/                  # textbook figures used in this lecture
-        ├── build_notebook.py        # generates the .ipynb — edit this to revise content
-        └── export_slides.sh         # rebuild + re-export pipeline (see below)
+    ├── NN-topic/
+    │   ├── build_notebook.py           # the lecture's content -- edit this
+    │   ├── build_derivations.py        # its companion notebook
+    │   ├── PSE-823_Lecture-NN_<Topic>.ipynb            # generated
+    │   ├── PSE-823_Lecture-NN_<Topic>_colab.ipynb      # generated
+    │   ├── PSE-823_Lecture-NN_<Topic>_slides.slides.html   # generated
+    │   └── images/                     # figures used by this lecture
+    └── derivations/                    # generated companion notebooks, decks, Colab copies
 ```
+
+Lectures 5, 9, 12 and 14 are empty slots on the site until their chapter
+files (Coughanowr Ch. 26, Cecil Ch. 2, Coughanowr Ch. 22 and Ch. 25) are
+available. To fill a slot, add its folder and build scripts and remove
+`status="slot"` from its entry in `tools/site_data.py`.
+
+## Lecture format: derive, then code, then explain
+
+Every Part of every lecture runs **Introduce -> Derive k/n -> Code k/n ->
+Build on it -> Your Turn -> Check** (details in `REVISION_PLAN.md`):
+
+- **Derive** slides give the board step; its result appears on click.
+- **Code** steps come as a unit, produced by `Deck.code()`:
+  an *explain* slide (what the cell does, which derivation step it
+  mirrors, any new function), the code cell (at most 12 lines of at most
+  72 characters), and a *walkthrough* in the speaker notes (line by line,
+  the expected output, what it confirms). The walkthrough numbers are
+  checked against the executed output.
+- **No laptops in class.** Code is read and interpreted, not typed:
+  *Your Turn* asks for a short hand calculation and a "what does this
+  print?" question. Cells tagged `predict` are exported with their output
+  cleared, so the class predicts the result before the instructor runs it.
+- Each lecture has a **companion notebook** (`build_derivations.py`) with
+  the full derivations and worked answers.
+
+Cell tags used by the tools: `walkthrough`, `answer`, `instructor`,
+`predict`, `setup`. Slide structure uses the usual
+`slideshow.slide_type` metadata (`slide`, `subslide`, `fragment`, `notes`).
+
+## Building a lecture
+
+```bash
+python3 lectures/10-tuning-identification/build_notebook.py
+bash tools/export_lecture.sh lectures/10-tuning-identification/PSE-823_Lecture-10_Tuning-Identification.ipynb
+python3 tools/check_slides.py lectures/10-tuning-identification/PSE-823_Lecture-10_Tuning-Identification_slides.slides.html
+python3 tools/build_site.py
+```
+
+`export_lecture.sh` lints the notebook (`--derivations` rules apply
+automatically under `lectures/derivations/`), executes it in place, clears
+the `predict` cells, exports the reveal.js deck against the local
+`assets/`, removes every CDN reference, and writes the Colab copy.
+`check_slides.py` uses Playwright's Chromium to screenshot-measure every
+slide at 1024x768; it must report 0 overflowing.
+
+To add a lecture: add its entry to `tools/site_data.py`, create
+`lectures/NN-topic/build_notebook.py` (copy an existing one for the
+pattern), build and export as above, then run `tools/build_site.py`.
 
 ## Presentation mode (Binder + RISE)
 
-Every notebook on the site (lectures, derivations, Python primer) can be presented
-as live slides. Its **Open in Binder** link launches the repo on mybinder.org straight
-into that file in the classic Jupyter Notebook interface, with a live kernel. Click the
-toolbar's slideshow icon (or press `Alt+R`) to enter/exit presentation mode; cells can
-be run and edited during the show.
+Every notebook on the site can be presented as live slides. Its **Open in
+Binder** link launches the repo on mybinder.org straight into that file in
+the classic Jupyter Notebook interface. Click the slideshow icon (or press
+`Alt+R`) to present; cells can be run during the show, and the walkthrough
+notes are in the speaker view.
 
-This is the same setup as the ChEProgDataSci course repo: `requirements.txt` and
-`runtime.txt` pin the environment Binder builds (`notebook==6.5.7` + `rise==5.7.1`,
-because RISE's slideshow button only ships for the classic notebook UI, plus the
-packages the notebooks import). RISE reads the same `slideshow.slide_type` cell
-metadata that the static exports use. Links must use `urlpath=notebooks%2F<path>`
-(not `lab/tree/`, which has no RISE). If a notebook imports a new package, add it to
-`requirements.txt`; Binder only rebuilds the image when that file changes.
+`requirements.txt` and `runtime.txt` pin the environment Binder builds
+(`notebook==6.5.7` + `rise==5.7.1`, because RISE's button only ships for the
+classic notebook UI, plus every package the notebooks import: numpy >= 2,
+scipy, sympy, matplotlib, python-control, GEKKO, pandas, scikit-learn).
+Links must use `urlpath=notebooks%2F<path>`. If a notebook imports a new
+package, add it to `requirements.txt`; Binder rebuilds when that file
+changes.
 
-The static reveal.js decks (**View slides**) remain for offline viewing; each folder's
-export script rebuilds them. The primer's script executes a throwaway copy so its deck
-shows outputs while the notebook itself stays unexecuted for live use.
+## The chapter reader (private)
 
-## Format
+The textbook chapters (Coughanowr & LeBlanc; Cecil Smith) are copyrighted,
+so their text is **never committed**. `chapters/` is in `.gitignore`.
 
-Each lecture is authored as a Jupyter notebook: markdown cells carry the
-Concept → Example → Your Turn → Check narrative, and code cells run live
-Python (numpy, scipy, sympy, python-control, GEKKO where relevant) that
-simulates or verifies whatever the lecture just derived by hand. The notebook
-is exported to a static reveal.js slide deck for classroom delivery — no
-server needed, works fully offline, and matches the course's visual theme.
-
-Cell tagging convention (`slideshow.slide_type` in cell metadata) controls
-the slide-deck structure:
-
-- `slide` — a new slide
-- `fragment` — revealed within the current slide
-- `notes` — hidden instructor speaker notes (answer keys), shown with `S` in reveal.js
-- `skip` — visible in the notebook, omitted from the slideshow
-
-## Adding a new lecture
-
-1. Copy `lectures/01-intro-and-modeling/` as a starting template into a new
-   `lectures/NN-topic-name/` folder.
-2. Edit `build_notebook.py` to author the new lecture's content.
-3. Run `./export_slides.sh` from inside that folder — it rebuilds the
-   notebook, executes every code cell, exports to reveal.js, and points the
-   deck at the shared `../../assets/` folder (reveal.js/MathJax/theme are
-   **not** duplicated per lecture — every lecture references the same copy).
-4. Add a card for it in the root `index.html` (and its companion in `derivations.html`), including its Colab link:
-   `https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/NN-topic-name/<notebook>_colab.ipynb`
-5. Commit and push — GitHub Pages picks up the change automatically.
+1. Download the Drive `Books/` folders into `chapters/src/`.
+2. Run `python3 tools/build_chapters.py`. It un-escapes the markdown,
+   repairs math and sub/superscripts, renders each chapter with the local
+   MathJax, copies its figures, and writes `chapters/manifest.js` and
+   `chapters/cleanup_report.md` (lines it could not fix).
+3. Open `chapters.html` locally. Chapters present in `manifest.js` get a
+   **Read** link; on the public site the page lists the chapters, the
+   lectures that use them, and a notice that the text is private.
 
 ## The Colab variant
 
-`export_slides.sh` also emits a `*_colab.ipynb` alongside the canonical
-notebook, via `tools/make_colab.py`. The canonical notebook is the offline
-classroom copy: it refers to its figures by relative path so the lecture
-folder works from a USB stick, and assumes the packages are installed.
-Neither holds in Colab, so the generated variant differs in exactly two ways:
+`make_colab.py` writes a `*_colab.ipynb` beside each notebook: figure
+references become absolute URLs on the published site, and a setup cell
+installs only what Colab lacks and the notebook imports (`control`,
+`gekko`, `pysindy`). Never hand-edit it. `--strip-notes` makes a student
+copy without answer keys and instructor notes (the code walkthroughs stay).
 
-- figure references are rewritten to absolute URLs on the published site
-  (public even though the repo is private, so the images load for anyone)
-- a setup cell is prepended that installs what Colab lacks — `python-control`;
-  numpy, scipy, sympy and matplotlib are already there
-
-Never hand-edit `*_colab.ipynb`; it is regenerated on every export. To build a
-student copy without the instructor answer keys, pass `--strip-notes`, which
-drops every cell tagged `slide_type: notes`.
-
-**The `Open in Colab` links require the repository to be public.** Colab opens
-a GitHub notebook by fetching it as the visitor, so while `ProcessControl` is
-private those links resolve to "Notebook not found" for everyone except
-accounts that both have repo access and have granted Colab private-repo
-scope. Students will not be able to use them until the repo is public.
+The `Open in Colab` links require the repository to be public.
 
 ## Why local reveal.js/MathJax instead of a CDN
 
-nbconvert's default reveal.js export pulls reveal.js, MathJax, jQuery, and
-RequireJS from CDNs, and bootstraps reveal.js via RequireJS's AMD loader.
-That default is fragile: on a real double-click/`file://` open (rather than
-served over http) the RequireJS bootstrap frequently fails silently, and the
-notebook renders as a flat scrollable page instead of an actual slideshow.
-`export_slides.sh` fixes this by bundling reveal.js and a pruned MathJax
-locally, dropping the unused jQuery/RequireJS/mermaid dependencies entirely,
-and replacing the AMD bootstrap with a plain `Reveal.initialize()` call —
-reveal.js and its notes plugin are both UMD bundles that expose plain globals
-when loaded as ordinary `<script>` tags, so no module loader is needed.
+nbconvert's default export pulls reveal.js, MathJax, jQuery and RequireJS
+from CDNs and boots reveal.js through RequireJS, which often fails silently
+when a deck is opened from `file://`. `localize_slides.py` points each deck
+at the bundled `assets/reveal.js` and pruned MathJax, drops
+jQuery/RequireJS/mermaid, replaces the bootstrap with a plain
+`Reveal.initialize()` (1024x768, no vertical centering), injects the course
+theme, and fails the export if any CDN reference remains.

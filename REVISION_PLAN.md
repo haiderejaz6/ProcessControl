@@ -1,6 +1,9 @@
 # PSE-823 Lecture Revision Plan: derive, then code, then explain
 
-Status: **approved for build** (decisions below were taken on 2026-10-01).
+Status: **built** for the 11 lectures whose chapter files exist (L1-L4,
+L6-L8, L10, L11, L13, L15), each with its companion notebook. L5, L9, L12
+and L14 are empty slots on the site (Section 9). Decisions were taken on
+2026-10-01; Section 10 records the build.
 Source of truth for scope: `PSE-823 Teaching Plan.md` (v2, 2026-09-28) in the
 course Drive folder. If the two disagree, the Teaching Plan wins and this file
 gets updated.
@@ -30,6 +33,8 @@ gets updated.
 | Which lectures | **All 15**, built in order, one batch at a time (Section 8). |
 | How code is explained | **Explain slide + notes**: a short "What this cell does" slide above each code cell, short inline comments, a full line-by-line walkthrough in speaker notes. The Colab copy turns the walkthrough into a visible markdown cell. |
 | Chapter `.md` cleanup | **Light automated fix** by script; anything it can't fix is listed in a report for manual follow-up. |
+| Lectures whose chapter file is missing | **Empty slots** on the site (L5, L9, L12, L14); built when the chapter arrives. |
+| Laptops in class | **None.** Code is interpreted in class, not typed: Your Turn asks "what does this print?" and `predict` cells are shown with their output cleared. Students run the notebooks after class (Binder or Colab). |
 
 ## 3. Lecture format (every Part of every lecture)
 
@@ -57,9 +62,10 @@ mini-cycles. Each Part runs:
    scikit-learn, PySINDy, GEKKO) for the general or nonlinear case. **Always
    checked against the derived result** (overlay or `np.allclose`), and
    explained the same way as in step 3.
-5. **Your Turn**: a short hand calculation, then a one-line code check. The
-   answer key goes in a `notes` cell; the full worked version goes in the
-   companion Derivations notebook.
+5. **Your Turn**: a short hand calculation, then a **code-interpretation**
+   question (read a few lines, predict the output, explain why). No laptops:
+   nobody types code in class. The answer key goes in a `notes` cell; the
+   full worked version goes in the companion Derivations notebook.
 6. **Check**: one cold-call, poll or think-pair-share.
 
 Rules carried over from the lecture-builder skill: examples come only from the
@@ -208,9 +214,8 @@ Every lecture passes these checks before it is pushed:
 
 1. **Missing chapter files.** Coughanowr Ch. 22 (needed for L12), Ch. 25 (L14)
    and Ch. 26 (L5), and Cecil Ch. 2 (cascade, L9) are not in Drive's `Books/`
-   folder. Ch. 19 (valves) is not scheduled. Without them those Parts follow
-   the contents list and the book's known examples, and are flagged for your
-   review.
+   folder. Ch. 19 (valves) is not scheduled. **Decision:** those four
+   lectures are empty slots on the site until the files arrive.
 2. **Lecture figures.** Figures for slides are copied from the chapter
    folders' page images into each lecture's `images/` (as L1-L2 already do,
    a few per lecture).
@@ -221,3 +226,29 @@ Every lecture passes these checks before it is pushed:
 5. **Laptops in class** (Teaching Plan open item): it changes whether Your
    Turn code checks are done by students or shown by you. The notebooks
    support both.
+
+## 10. Build record
+
+| L | Source | Parts | Notes |
+|---|---|---|---|
+| 01 | C&L Ch. 1; Cecil 1.1-1.2 | course map; economics and DCS blocks; feedback, P/PI, offset; stability | hot-water tank on/off, P, PI; variance and target |
+| 02 | C&L Ch. 2-3 | balances; Laplace; partial fractions; root locations | Ex. 3.1-3.5 inverted in SymPy |
+| 03 | C&L Ch. 4-6 | thermometer; fitting tau; linearization; tanks in series | existing content, walkthroughs added |
+| 04 | C&L Ch. 7-8 | second-order systems; transport lag and Pade; block diagrams | FOPDT fit to four tanks |
+| 05 | C&L Ch. 9-11, 26 | **slot** | Ch. 26 missing |
+| 06 | C&L Ch. 12-14 | P and PI; measurement lag; Routh; root locus | exact Ex. 14.1 crossings next to the book's graphical ones |
+| 07 | C&L Ch. 15 | substitution rule; Bode; PI/PD and dead time | AR and phase measured from simulation |
+| 08 | C&L Ch. 16 | Bode criterion; margins; Ziegler-Nichols | dead time as a `deque` |
+| 09 | C&L Ch. 17; Cecil 2-6 | **slot** | Cecil Ch. 2 missing |
+| 10 | C&L Ch. 18 | merits and tuning rules; step/pulse/doublet fits; ARX; ML entry 1 | minimum-ITAE tuning matches Table 18.5; random forest fails outside its data |
+| 11 | C&L Ch. 20 | kettle; absorber; exchanger (method of lines); ML entry 2 | physics vs black box vs grey box at unseen flows |
+| 12 | C&L Ch. 21-22 | **slot** | Ch. 22 missing |
+| 13 | C&L Ch. 23; Cecil 7, 8.1 | interacting systems; RGA and pairing; decoupling; multiloop stability | MIMO without slycot (state space + `solve_ivp`) |
+| 14 | C&L Ch. 24-25 | **slot** | Ch. 25 missing |
+| 15 | Cecil 8.2-8.3 | Smith predictor; step-response models and DMC; QDMC, move suppression, GEKKO; ML entry 4 | least squares vs ridge FIR models judged inside the controller |
+
+Every built notebook passed the linter, executed top to bottom, and its
+static deck reported 0 overflowing slides at 1024x768 in `check_slides.py`.
+Walkthrough numbers were checked against the executed outputs. Where the
+book reads values off a graph, the lecture shows the exact value next to the
+book's (e.g. Ex. 14.1, Ex. 16.4, Kc,u in Sec. 16.1).
