@@ -2,9 +2,11 @@ notebook==6.5.7
 rise==5.7.1
 jupyterlab==3.6.7
 ipykernel
-numpy
+numpy>=2.0
 scipy
 sympy
 matplotlib
 control
 gekko
+pandas
+scikit-learn

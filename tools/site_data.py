@@ -67,13 +67,13 @@ LECTURES = [
          title="Controller Tuning and Process Identification",
          meta="Coughanowr &amp; LeBlanc, Ch. 18",
          chapters=["coughanowr-ch18"],
-         deriv="Tuning rules from fitted models; step-test fit; ARX normal equations"),
+         deriv="Reaction-curve inflection point; normal equations; tank gain linearized"),
     dict(n=11, folder="11-complex-processes",
          base="PSE-823_Lecture-11_Complex-Processes",
          title="Theoretical Analysis of Complex Processes",
          meta="Coughanowr &amp; LeBlanc, Ch. 20",
          chapters=["coughanowr-ch20"],
-         deriv="Steam-jacketed kettle; gas absorber; distributed-parameter exchanger"),
+         deriv="Kettle linearization; absorber damping bound; slab and exchanger transforms"),
     dict(n=12, status="slot",
          title="State-Space Representation and the Transition Matrix",
          meta="Coughanowr &amp; LeBlanc, Ch. 21&ndash;22",
@@ -84,7 +84,7 @@ LECTURES = [
          title="Multivariable Control: Interaction, RGA and Decoupling",
          meta="Coughanowr &amp; LeBlanc, Ch. 23 &middot; Cecil Smith, Ch. 7, Sec. 8.1",
          chapters=["coughanowr-ch23", "cecil-ch07", "cecil-ch08"],
-         deriv="Interacting loops; relative gain array; ideal decoupler"),
+         deriv="Ex. 23.1 by hand; RGA row sums; PI cross-controllers; the reduced quartic"),
     dict(n=14, status="slot",
          title="Nonlinear Systems and Phase-Plane Analysis",
          meta="Coughanowr &amp; LeBlanc, Ch. 24&ndash;25",
@@ -95,7 +95,7 @@ LECTURES = [
          title="Dead-Time Compensation and Model Predictive Control",
          meta="Cecil Smith, Sec. 8.2&ndash;8.3",
          chapters=["cecil-ch08"],
-         deriv="Smith predictor structure; step-response prediction; the MPC objective"),
+         deriv="Smith predictor closed loop; QDMC least-squares moves; square DMC limits"),
 ]
 
 # Chapter list. `src` is the file name in the Drive Books/ folder; None means

@@ -88,8 +88,8 @@ def main():
     ap.add_argument("--pip", action="append", default=None,
                     help="package to install in the setup cell (repeatable)")
     ap.add_argument("--strip-notes", action="store_true",
-                    help="drop cells tagged slide_type=notes, i.e. the instructor "
-                         "answer keys, to make a student-facing copy")
+                    help="drop the instructor notes and answer keys (slide_type=notes, "
+                         "except code walkthroughs) to make a student copy")
     args = ap.parse_args()
 
 
@@ -105,8 +105,11 @@ def main():
     cells = nb["cells"]
     if args.strip_notes:
         before = len(cells)
-        cells = [c for c in cells
-                 if c.get("metadata", {}).get("slideshow", {}).get("slide_type") != "notes"]
+        def is_key(c):                   # answer keys and instructor notes;
+            md = c.get("metadata", {})   # code walkthroughs stay
+            return (md.get("slideshow", {}).get("slide_type") == "notes"
+                    and "walkthrough" not in md.get("tags", []))
+        cells = [c for c in cells if not is_key(c)]
         print(f"   stripped {before - len(cells)} instructor-notes cell(s)")
 
     rewritten = 0
