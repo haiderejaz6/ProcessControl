@@ -56,7 +56,8 @@ $PM = 180^\\circ - 2\\tan^{-1}\\omega_g$. Closed loop (Eq. 12.17 with
 $\\tau = \\tau_m = 1$): $\\zeta_2 = 1/\\sqrt{1 + K_c} = 1/\\sqrt{2 + \\omega_g^2}$.
 Eliminate $\\omega_g = \\tan(90^\\circ - PM/2)$:
 $\\zeta_2 = 1/\\sqrt{2 + \\cot^2(PM/2)}$. At $PM = 30^\\circ$:
-$\\cot 15^\\circ = 3.73$, $\\zeta_2 = 0.26$; $K_c = 1 + 3.73^2 = 14.9$.
+$\\cot 15^\\circ = 3.73$, $\\zeta_2 = 0.25$ (book: 0.26, read from Fig. 16-9);
+$K_c = 1 + 3.73^2 = 14.9$.
 
 ### Ex. 16.2 summary
 
@@ -69,8 +70,9 @@ pm = np.radians(30)
 cot = 1 / np.tan(pm / 2)
 print(f"zeta2 = {1/np.sqrt(2 + cot**2):.3f}, Kc = {1 + cot**2:.1f}")
 """, """
-Prints zeta2 = 0.259 and Kc = 14.9: the book's "PM > 30 deg requires
-zeta2 > 0.26, hence Kc < 14".
+Prints zeta2 = 0.251 and Kc = 14.9: the book's "PM > 30 deg requires
+zeta2 > 0.26, hence Kc < 14", with the exact values in place of the
+graph readings.
 """)
 
 d.part("C", "Ziegler-Nichols for the Two-Tank Reactor",
@@ -92,10 +94,11 @@ two identical PD factors, corner at $1/2\\tau_D$.
 """)
 d.code("Check -- the double zero", ["Roots of the Z-N PID numerator"], """
 tD = 0.47
-print(np.roots([4 * tD**2, 4 * tD, 1]), "-> -1/(2 tD) =",
+print(np.roots([4 * tD**2, 4 * tD, 1]).real, "-> -1/(2 tD) =",
       round(-1 / (2 * tD), 3))
 """, """
-The numerator 4 tD^2 s^2 + 4 tD s + 1 has a repeated root at
+The numerator 4 tD^2 s^2 + 4 tD s + 1 has a repeated root (`.real`
+drops a round-off imaginary part of 1e-8) at
 -1/(2 tD) = -1.064 for tD = 0.47 min: the two PD corners coincide, as
 Eq. 16.6 states.
 """)
