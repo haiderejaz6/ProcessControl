@@ -31,14 +31,24 @@ import uuid
 
 DEFAULT_BASE_URL = "https://haiderejaz6.github.io/ProcessControl"
 
-# Preinstalled on Colab: numpy, scipy, sympy, matplotlib. Not preinstalled:
-DEFAULT_PIP = ["control"]
+# Preinstalled on Colab: numpy, scipy, sympy, matplotlib, pandas, scikit-learn.
+# Not preinstalled -- installed only when a code cell imports them:
+OPTIONAL_PIP = {"control": "control", "pysindy": "pysindy", "gekko": "gekko"}
+
+
+def detect_pip(cells):
+    """Packages Colab lacks that this notebook actually imports."""
+    code = "\n".join("".join(c["source"]) for c in cells
+                     if c["cell_type"] == "code")
+    return [pkg for mod, pkg in OPTIONAL_PIP.items()
+            if re.search(rf"^\s*(import|from)\s+{mod}\b", code, re.M)]
 
 SETUP_MARKDOWN = """\
 ### Colab setup
 
 Run the cell below first. It installs the packages Colab does not ship with
-(`numpy`, `scipy`, `sympy` and `matplotlib` are already there). Figures are
+(`numpy`, `scipy`, `sympy`, `matplotlib`, `pandas` and `scikit-learn` are
+already there). Figures are
 loaded from the course site, so this notebook needs a network connection --
 the copy in the repo is the one to use offline.
 """
@@ -82,7 +92,6 @@ def main():
                          "answer keys, to make a student-facing copy")
     args = ap.parse_args()
 
-    pip_pkgs = args.pip if args.pip is not None else DEFAULT_PIP
 
     root = repo_root(args.notebook)
     if root is None:
@@ -110,12 +119,13 @@ def main():
             c["source"] = new.splitlines(keepends=True)
             rewritten += 1
 
+    pip_pkgs = args.pip if args.pip is not None else detect_pip(cells)
     install = " ".join(pip_pkgs)
     # nbformat >= 4.5 requires a unique id on every cell.
     def cell_id():
         return uuid.uuid4().hex[:8]
 
-    setup = [
+    setup = [] if not pip_pkgs else [
         {"cell_type": "markdown", "id": cell_id(),
          "metadata": {"slideshow": {"slide_type": "skip"}},
          "source": SETUP_MARKDOWN.splitlines(keepends=True)},

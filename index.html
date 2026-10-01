@@ -25,6 +25,7 @@
     <nav class="nav" aria-label="Main">
       <a href="index.html" aria-current="page">Lectures</a>
       <a href="derivations.html">Derivations</a>
+      <a href="chapters.html">Chapters</a>
       <a href="resources.html">Resources</a>
       <a href="course-info.html">Course info</a>
     </nav>
@@ -42,7 +43,7 @@
     </div>
     <ul class="facts" aria-label="Course facts">
       <li><b>3</b> credit hours</li>
-      <li><b>3</b> lectures published</li>
+      <li><b>11</b> of 15 lectures published</li>
       <li>Slides &middot; Colab &middot; Binder</li>
     </ul>
     <p class="byline"><strong>Haider Ejaz, PhD</strong> &middot; School of Chemical and Materials Engineering</p>
@@ -56,17 +57,18 @@
       <div class="section-head">
         <h2 id="lectures-heading">Lectures</h2>
         <span class="rule"></span>
-        <span class="count">3 published</span>
+        <span class="count">11 of 15 published</span>
       </div>
 
       <ul class="lecture-list">
+<!-- LECTURES:BEGIN -->
         <li class="lecture-card">
           <div class="card-index" aria-hidden="true">01</div>
           <div class="card-body">
             <h3 class="card-title">
-              <span class="sr-only">Lecture 1: </span>Introduction &mdash; Control Fundamentals and the DCS Implementation Layer
+              <span class="sr-only">Lecture 1: </span>Introduction: Control Fundamentals and the DCS Layer
             </h3>
-            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 1 &middot; Cecil Smith, Intro &amp; Sec 1.1&ndash;1.2</p>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 1 &middot; Cecil Smith, Ch. 1 (Sec. 1.1&ndash;1.2)</p>
             <div class="card-actions">
               <a class="btn btn-primary" href="lectures/01-intro-fundamentals/PSE-823_Lecture-01_Intro-Fundamentals_slides.slides.html">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
@@ -91,9 +93,9 @@
           <div class="card-index" aria-hidden="true">02</div>
           <div class="card-body">
             <h3 class="card-title">
-              <span class="sr-only">Lecture 2: </span>Modeling Review and Partial-Fraction Inversion
+              <span class="sr-only">Lecture 2: </span>Modeling and Laplace Transforms, Derived then Coded
             </h3>
-            <p class="card-meta">Coughanowr &amp; LeBlanc &middot; Chapters 2&ndash;3</p>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 2&ndash;3</p>
             <div class="card-actions">
               <a class="btn btn-primary" href="lectures/02-modeling-laplace/PSE-823_Lecture-02_Modeling-Laplace_slides.slides.html">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
@@ -120,7 +122,7 @@
             <h3 class="card-title">
               <span class="sr-only">Lecture 3: </span>First-Order Systems: Derive, then Code
             </h3>
-            <p class="card-meta">Coughanowr &amp; LeBlanc &middot; Chapters 4&ndash;6</p>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 4&ndash;6</p>
             <div class="card-actions">
               <a class="btn btn-primary" href="lectures/03-first-order-systems/PSE-823_Lecture-03_First-Order-Systems_slides.slides.html">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
@@ -141,9 +143,266 @@
             </div>
           </div>
         </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">04</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 4: </span>Second-Order Systems, Transportation Lag and the Control System
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 7&ndash;8</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/04-second-order-control-system/PSE-823_Lecture-04_Second-Order-Control-System_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/04-second-order-control-system/PSE-823_Lecture-04_Second-Order-Control-System_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F04-second-order-control-system%2FPSE-823_Lecture-04_Second-Order-Control-System.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/04-second-order-control-system/PSE-823_Lecture-04_Second-Order-Control-System.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card is-slot">
+          <div class="card-index" aria-hidden="true">05</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 5: </span>Controllers, the Reactor Block Diagram and Digital PID
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 9&ndash;11 and Ch. 26</p>
+            <p class="slot-note">Coming later in the term. Waiting for the Ch. 26 chapter file.</p>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">06</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 6: </span>Closed-Loop Response, Stability and Root Locus
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 12&ndash;14</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/06-closed-loop-stability/PSE-823_Lecture-06_Closed-Loop-Stability_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/06-closed-loop-stability/PSE-823_Lecture-06_Closed-Loop-Stability_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F06-closed-loop-stability%2FPSE-823_Lecture-06_Closed-Loop-Stability.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/06-closed-loop-stability/PSE-823_Lecture-06_Closed-Loop-Stability.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">07</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 7: </span>Frequency Response and Bode Diagrams
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 15</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/07-frequency-response/PSE-823_Lecture-07_Frequency-Response_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/07-frequency-response/PSE-823_Lecture-07_Frequency-Response_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F07-frequency-response%2FPSE-823_Lecture-07_Frequency-Response.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/07-frequency-response/PSE-823_Lecture-07_Frequency-Response.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">08</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 8: </span>Control System Design by Frequency Response
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 16</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/08-frequency-design/PSE-823_Lecture-08_Frequency-Design_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/08-frequency-design/PSE-823_Lecture-08_Frequency-Design_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F08-frequency-design%2FPSE-823_Lecture-08_Frequency-Design.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/08-frequency-design/PSE-823_Lecture-08_Frequency-Design.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card is-slot">
+          <div class="card-index" aria-hidden="true">09</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 9: </span>Advanced Strategies: Cascade, Feedforward, Override
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 17 &middot; Cecil Smith, Ch. 2&ndash;6</p>
+            <p class="slot-note">Coming later in the term. Waiting for the Cecil Smith Ch. 2 chapter file.</p>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">10</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 10: </span>Controller Tuning and Process Identification
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 18</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/10-tuning-identification/PSE-823_Lecture-10_Tuning-Identification_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/10-tuning-identification/PSE-823_Lecture-10_Tuning-Identification_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F10-tuning-identification%2FPSE-823_Lecture-10_Tuning-Identification.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/10-tuning-identification/PSE-823_Lecture-10_Tuning-Identification.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">11</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 11: </span>Theoretical Analysis of Complex Processes
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 20</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/11-complex-processes/PSE-823_Lecture-11_Complex-Processes_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/11-complex-processes/PSE-823_Lecture-11_Complex-Processes_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F11-complex-processes%2FPSE-823_Lecture-11_Complex-Processes.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/11-complex-processes/PSE-823_Lecture-11_Complex-Processes.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card is-slot">
+          <div class="card-index" aria-hidden="true">12</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 12: </span>State-Space Representation and the Transition Matrix
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 21&ndash;22</p>
+            <p class="slot-note">Coming later in the term. Waiting for the Ch. 22 chapter file.</p>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">13</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 13: </span>Multivariable Control: Interaction, RGA and Decoupling
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 23 &middot; Cecil Smith, Ch. 7, Sec. 8.1</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/13-multivariable-control/PSE-823_Lecture-13_Multivariable-Control_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/13-multivariable-control/PSE-823_Lecture-13_Multivariable-Control_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F13-multivariable-control%2FPSE-823_Lecture-13_Multivariable-Control.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/13-multivariable-control/PSE-823_Lecture-13_Multivariable-Control.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="lecture-card is-slot">
+          <div class="card-index" aria-hidden="true">14</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 14: </span>Nonlinear Systems and Phase-Plane Analysis
+            </h3>
+            <p class="card-meta">Coughanowr &amp; LeBlanc, Ch. 24&ndash;25</p>
+            <p class="slot-note">Coming later in the term. Waiting for the Ch. 25 chapter file.</p>
+          </div>
+        </li>
+        <li class="lecture-card">
+          <div class="card-index" aria-hidden="true">15</div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <span class="sr-only">Lecture 15: </span>Dead-Time Compensation and Model Predictive Control
+            </h3>
+            <p class="card-meta">Cecil Smith, Sec. 8.2&ndash;8.3</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="lectures/15-dead-time-mpc/PSE-823_Lecture-15_Dead-Time-MPC_slides.slides.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                View slides
+              </a>
+              <a class="btn btn-outline" href="https://colab.research.google.com/github/haiderejaz6/ProcessControl/blob/main/lectures/15-dead-time-mpc/PSE-823_Lecture-15_Dead-Time-MPC_colab.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>
+                Open in Colab
+              </a>
+              <a class="btn btn-outline" href="https://mybinder.org/v2/gh/haiderejaz6/ProcessControl/main?urlpath=notebooks%2Flectures%2F15-dead-time-mpc%2FPSE-823_Lecture-15_Dead-Time-MPC.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>
+                Open in Binder
+              </a>
+              <a class="btn btn-quiet" href="lectures/15-dead-time-mpc/PSE-823_Lecture-15_Dead-Time-MPC.ipynb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Notebook (.ipynb)
+              </a>
+            </div>
+          </div>
+        </li>
+<!-- LECTURES:END -->
       </ul>
 
-      <p class="upcoming">More lectures are added here as the course progresses.</p>
+      <p class="upcoming">Dashed cards are lectures still to come; they fill in as the term progresses.</p>
     </section>
 
     <section class="section" aria-labelledby="more-heading">
