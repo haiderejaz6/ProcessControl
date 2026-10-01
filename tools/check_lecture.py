@@ -82,11 +82,13 @@ def main():
             if "<!-- source:" not in text:
                 err(i, "Part divider has no <!-- source: ... --> tag")
             parts.append([i, False, False])
-        if parts and text.lstrip().startswith("### Your Turn"):
+        if args.derivations:
+            pass
+        elif parts and text.lstrip().startswith("### Your Turn"):
             parts[-1][1] = True
             if not (i + 1 < len(cells) and "answer" in tags(cells[i + 1])):
                 err(i, "Your Turn has no answer-key notes cell after it")
-        if parts and text.lstrip().startswith("### Check"):
+        elif parts and text.lstrip().startswith("### Check"):
             parts[-1][2] = True
             if not (i + 1 < len(cells) and "answer" in tags(cells[i + 1])):
                 err(i, "Check has no answer notes cell after it")

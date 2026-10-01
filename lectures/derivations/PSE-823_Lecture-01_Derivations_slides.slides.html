@@ -7558,75 +7558,89 @@ main {
   color: #e8edf8 !important;
 }
 
+/* ---- nbconvert (JupyterLab template) decks at 1024x768, 4:3 ----
+   Sized in px because the slide is laid out at 1024x768 and then scaled. */
+.reveal .jp-InputPrompt,
+.reveal .jp-OutputPrompt { display: none; }
+.reveal .jp-Cell { padding: 2px 0; }
+.reveal .jp-InputArea-editor,
+.reveal .jp-CodeMirrorEditor { border-left: 4px solid #0b3d91; }
+.reveal .jp-CodeMirrorEditor pre,
+.reveal .jp-InputArea pre,
+.reveal .jp-RenderedText pre,
+.reveal .jp-OutputArea pre {
+  font-size: 17px;
+  line-height: 1.35;
+  max-height: none;
+  margin: 0;
+  padding: 8px 12px;
+}
+.reveal .jp-OutputArea pre { border-left: 0; background: #ffffff; }
+.reveal .jp-RenderedImage img,
+.reveal .jp-OutputArea img {
+  max-height: 330px;
+  width: auto;
+  box-shadow: none;
+  margin: 4px auto;
+}
+.reveal .jp-RenderedMarkdown p,
+.reveal .jp-RenderedMarkdown li { font-size: 22px; }
+.reveal .jp-RenderedMarkdown h3 { font-size: 30px; margin: 0 0 12px; }
+.reveal .jp-RenderedMarkdown h2 { font-size: 38px; }
+.reveal .jp-RenderedMarkdown h1 { font-size: 44px; }
+.reveal .jp-RenderedMarkdown pre code { font-size: 17px; }
+.reveal .jp-RenderedMarkdown img { max-height: 300px; }
+.reveal .jp-RenderedMarkdown .MathJax_Display { margin: 8px 0 !important; }
+/* a slide that is still too tall scrolls instead of being cut off */
+.reveal .slides section > section.present,
+.reveal .slides > section.present:not(.stack) {
+  height: 100%;
+  overflow-y: auto;
+}
+
 </style>
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19fca230">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc579ff0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="PSE-823-Lecture-1----Full-Derivations-(Companion)">PSE-823 Lecture 1 -- Full Derivations (Companion)<a class="anchor-link" href="#PSE-823-Lecture-1----Full-Derivations-(Companion)">¶</a></h1><p>Companion to <code>PSE-823_Lecture1_intro-control-economics.ipynb</code>. Mirrors its Part order. Lecture 1 is mostly conceptual, so this is fuller reasoning rather than algebra.</p>
+<h1 id="PSE-823:-Advanced-Process-Dynamics-and-Control">PSE-823: Advanced Process Dynamics and Control<a class="anchor-link" href="#PSE-823:-Advanced-Process-Dynamics-and-Control">¶</a></h1><h2 id="Lecture-1-Companion----Full-Derivations-and-Worked-Answers">Lecture 1 Companion -- Full Derivations and Worked Answers<a class="anchor-link" href="#Lecture-1-Companion----Full-Derivations-and-Worked-Answers">¶</a></h2><h3 id="(Coughanowr-&amp;-LeBlanc,-Ch.-1;-Cecil-Smith,-Intro-and-Sec.-1.1-1.2)">(Coughanowr &amp; LeBlanc, Ch. 1; Cecil Smith, Intro and Sec. 1.1-1.2)<a class="anchor-link" href="#(Coughanowr-&amp;-LeBlanc,-Ch.-1;-Cecil-Smith,-Intro-and-Sec.-1.1-1.2)">¶</a></h3>
 </div>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b74220d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9d9d7da">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Part-B----Your-Turn,-full-answer">Part B -- Your Turn, full answer<a class="anchor-link" href="#Part-B----Your-Turn,-full-answer">¶</a></h2><p>(cascade temperature-to-steam-flow)</p>
+<h2 id="How-to-use-this-notebook">How to use this notebook<a class="anchor-link" href="#How-to-use-this-notebook">¶</a></h2><p>Same Part order as the lecture. Each Part gives the complete algebra
+that the lecture works on the board, then a code cell that checks it.
+Your Turn answers are worked in full at the end of each Part.</p>
 </div>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ac342f0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74076acd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Tag chain:</p>
-<ul>
-<li><code>TC.PV</code> = tube-side outlet temperature transmitter</li>
-<li><code>TC.MN</code> -&gt; <code>FC.RSP</code></li>
-<li><code>FC.PV</code> = steam flow transmitter</li>
-<li><code>FC.MN</code> -&gt; steam control valve opening</li>
+<h3 id="Setup-(run-once)">Setup (run once)<a class="anchor-link" href="#Setup-(run-once)">¶</a></h3><ul>
+<li>Imports used below</li>
 </ul>
-<p>Windup direction: the physical valve lives on the <em>inner</em> loop (FC), so only FC can detect saturation (its own PV stops responding to its own output). FC must send the tracking signal back to TC -- mirroring the level-to-flow example. Common error: assuming TC can detect windup directly -- it can't, since TC's PV keeps changing briefly due to exchanger lag.</p>
 </div>
 </div>
 </div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=56215ddf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Part-C----Your-Turn,-full-answers">Part C -- Your Turn, full answers<a class="anchor-link" href="#Part-C----Your-Turn,-full-answers">¶</a></h2>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=badf58c1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Gain-comparison-(System-A-vs.-System-B)">Gain comparison (System A vs. System B)<a class="anchor-link" href="#Gain-comparison-(System-A-vs.-System-B)">¶</a></h3><p>$$e_{ss} = \frac{\Delta d}{1+K_cK_p}$$</p>
-<p>Shows $K_c\to\infty$ drives offset toward zero but never reaches it -- motivating integral action. Instability needs the <em>dynamic</em> transfer function (with measurement lag), not just steady-state gain. Today is vocabulary and the warning; the algebra for <em>why</em> instability happens is coming.</p>
-</div>
-</div>
-</div>
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d1545091">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_setup" id="cell-id=15a54cc8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7634,12 +7648,74 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="n">Kc</span><span class="p">,</span> <span class="n">Kp</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'K_c K_p Delta_d e_ss'</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">eq</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">d</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Kc</span> <span class="o">*</span> <span class="n">Kp</span><span class="p">))</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">eq</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Kc</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Finite Kc solving e_ss=0:"</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>  <span class="c1"># empty -&gt; confirms it's a limit, not attainable</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6802ab76">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Part-A">Part A<a class="anchor-link" href="#Part-A">¶</a></h2><h3 id="Hot-Water-Tank-under-On/Off-Control">Hot Water Tank under On/Off Control<a class="anchor-link" href="#Hot-Water-Tank-under-On/Off-Control">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 1, Example 1.1)</p>
+<!-- source: coughanowr-ch1 -->
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4c4247e6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Heat-up-time-and-duty-cycle">Heat-up time and duty cycle<a class="anchor-link" href="#Heat-up-time-and-duty-cycle">¶</a></h3><p>Model: $\tau\,dT/dt = (T_i - T) + Kq$, with $\tau = 30$ min,
+$K = 90$ F, $T_i = 60$ F.</p>
+<p><strong>Heat-up</strong> with the burner fully on ($q = 1$) from $T(0) = 100$ F: the
+steady value is $T_i + K = 150$ F, so
+$T(t) = 150 - 50\,e^{-t/30}$. Setting $T = 130$:
+$e^{-t/30} = 0.4$, $t = 30\ln 2.5 = 27.5$ min.</p>
+<p><strong>Duty cycle</strong> at 130 F: the average heat input must equal the
+steady requirement, $\bar q = (130 - T_i)/K$: 0.778 at $T_i = 60$ F,
+0.889 at $T_i = 50$ F (Your Turn 1).</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ba8b4f2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----heat-up-time-with-SymPy">Check -- heat-up time with SymPy<a class="anchor-link" href="#Check----heat-up-time-with-SymPy">¶</a></h3><ul>
+<li><code>dsolve</code> with the initial condition, then solve for 130 F</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8ee0001c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"t"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s2">"T"</span><span class="p">)</span>
+<span class="n">ode</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="n">T</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="p">(</span><span class="mi">60</span> <span class="o">-</span> <span class="n">T</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">+</span> <span class="mi">90</span><span class="p">)</span>   <span class="c1"># q = 1</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">ode</span><span class="p">,</span> <span class="n">T</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">ics</span><span class="o">=</span><span class="p">{</span><span class="n">T</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="mi">100</span><span class="p">})</span><span class="o">.</span><span class="n">rhs</span>
+<span class="n">t130</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span> <span class="n">t</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">t130</span> <span class="o">-</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">t130</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7652,29 +7728,381 @@ main {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Finite Kc solving e_ss=0: []
+<pre>150 - 50*exp(-t/30)
+0
+27.49 min
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2eff10cf">
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=261603be">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> <code>dsolve</code> solves the first-order ODE with T(0) = 100; the solution is
+150 - 50 exp(-t/30). <code>sp.solve(sp.Eq(sol, 130), t)</code> inverts it. SymPy writes the answer as
+the log of a large fraction, so the second print subtracts 30 ln 2.5
+and simplifies: 0, i.e. the two are equal. The third print gives 27.49
+min, the 27.4 min seen in the lecture's sampled loop (the loop reports
+the first 0.1-min sample at or above 130 F).</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3d6e549">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Cruise-control-block-diagram-(Problem-1.3),-full-labeling">Cruise control block diagram (Problem 1.3), full labeling<a class="anchor-link" href="#Cruise-control-block-diagram-(Problem-1.3),-full-labeling">¶</a></h3><ul>
-<li><strong>Controlled variable:</strong> vehicle speed</li>
-<li><strong>Set point:</strong> desired cruising speed</li>
-<li><strong>Manipulated variable:</strong> throttle position / fuel flow</li>
-<li><strong>Disturbances:</strong> road grade, wind resistance, rolling resistance</li>
-<li><strong>Measurement device:</strong> speedometer / wheel-speed sensor</li>
-<li><strong>Controller:</strong> cruise-control module</li>
+<h3 id="Your-Turn-A,-worked">Your Turn A, worked<a class="anchor-link" href="#Your-Turn-A,-worked">¶</a></h3><ol>
+<li>$\bar q = (130 - 50)/90 = 0.889$: on 89% of the time.</li>
+<li><code>thermostat(131.0, T_set=132.0)</code>: $e = 1.0 &gt; 0$, prints <code>1.0</code>;
+<code>thermostat(129.9, T_set=132.0)</code>: $e = 2.1 &gt; 0$, prints <code>1.0</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=94e4701e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Part-B">Part B<a class="anchor-link" href="#Part-B">¶</a></h2><h3 id="Offset-under-P-Control;-Why-PI-Removes-It">Offset under P Control; Why PI Removes It<a class="anchor-link" href="#Offset-under-P-Control;-Why-PI-Removes-It">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 1)</p>
+<!-- source: coughanowr-ch1 -->
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f3b4b3bf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="P-control,-full-algebra">P control, full algebra<a class="anchor-link" href="#P-control,-full-algebra">¶</a></h3><p>Steady state: $0 = (T_i - T) + K[q_s + K_c(T_{set} - T)]$.
+At the design point $0 = (60 - 130) + Kq_s$. Subtract, with
+$T' = T - 130$ and $T_i' = T_i - 60$:</p>
+<p>$$0 = T_i' - T' - KK_cT' \;\Rightarrow\; T' = \frac{T_i'}{1 + KK_c},
+\qquad e_{ss} = -T' = \frac{-T_i'}{1 + KK_c}$$</p>
+<p>With $T_i' = -10$ F, $K = 90$ F: $e_{ss} = 10/(1 + 90K_c)$.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=194c0d04">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="PI-control:-why-the-offset-must-vanish">PI control: why the offset must vanish<a class="anchor-link" href="#PI-control:-why-the-offset-must-vanish">¶</a></h3><p>$q = q_s + K_c\left(e + \frac{1}{\tau_I}\int_0^t e\,dt'\right)$.
+At a steady state every signal is constant, so $q$ is constant. If
+$e \ne 0$ the integral grows linearly in time and $q$ cannot be
+constant. Therefore any steady state has $e = 0$: no offset, whatever
+$K_c$ and $\tau_I$ -- provided the loop settles (Part C).</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=91734481">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----offset-formula-against-the-simulated-P-loop">Check -- offset formula against the simulated P loop<a class="anchor-link" href="#Check----offset-formula-against-the-simulated-P-loop">¶</a></h3><ul>
+<li>Re-run the lecture's loop for several gains; compare</li>
 </ul>
-<p>Common error: naming "engine" as the controlled variable, or omitting the measurement device.</p>
-<p>Note: Problems 1.1, 1.2, 1.4-1.6 (steering, archery, toilet tank, security lighting, home oven) are structurally identical -- a bank of alternate cold-call prompts for a future offering.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fe985d8e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">final_T</span><span class="p">(</span><span class="n">Kc</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">300.0</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="mf">130.0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">t_end</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)):</span>
+        <span class="n">Ti</span> <span class="o">=</span> <span class="mf">60.0</span> <span class="k">if</span> <span class="n">k</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="mf">50.0</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">70</span><span class="o">/</span><span class="mi">90</span> <span class="o">+</span> <span class="n">Kc</span> <span class="o">*</span> <span class="p">(</span><span class="mf">130.0</span> <span class="o">-</span> <span class="n">T</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">T</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">((</span><span class="n">Ti</span> <span class="o">-</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="mi">30</span>
+    <span class="k">return</span> <span class="n">T</span>
+<span class="k">for</span> <span class="n">Kc</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Kc</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">130</span> <span class="o">-</span> <span class="n">final_T</span><span class="p">(</span><span class="n">Kc</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">90</span><span class="o">*</span><span class="n">Kc</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0.01 5.263 5.263
+0.05 1.818 1.818
+0.2 0.526 0.526
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9a6f419">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> <code>final_T</code> is the lecture's P loop, run long enough (300 min) to settle.
+Each line prints the gain, the simulated offset and the formula. They
+agree to three decimals: 5.263, 1.818, 0.526 F. Kc = 0.2 is Your Turn
+B1 (0.53 F).</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff26cbfc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Your-Turn-B,-worked">Your Turn B, worked<a class="anchor-link" href="#Your-Turn-B,-worked">¶</a></h3><ol>
+<li>$e_{ss} = 10/(1 + 18) = 0.53$ F.</li>
+<li><code>run(0.0)[-1]</code>: no feedback, $q$ stays $70/90$. The tank obeys
+$30\,dT/dt = 50 - T + 70$ from $T = 130$ at $t = 10$ min:
+$T = 120 + 10e^{-(t-10)/30}$; at $t = 150$, $120.09$ F, printed as
+120.1 to one decimal.</li>
+</ol>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32074dc3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Part-C">Part C<a class="anchor-link" href="#Part-C">¶</a></h2><h3 id="The-Gain-Limit-with-Measurement-and-Burner-Lags">The Gain Limit with Measurement and Burner Lags<a class="anchor-link" href="#The-Gain-Limit-with-Measurement-and-Burner-Lags">¶</a></h3><p>(Coughanowr &amp; LeBlanc, Ch. 1 (made exact in Ch. 13))</p>
+<!-- source: coughanowr-ch1 -->
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dcfdac5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Characteristic-equation-(a-preview-of-Lecture-6)">Characteristic equation (a preview of Lecture 6)<a class="anchor-link" href="#Characteristic-equation-(a-preview-of-Lecture-6)">¶</a></h3><p>Three first-order lags in the loop -- tank (30 min), burner (3 min),
+sensor (2 min) -- and a P controller with loop gain $KK_c$. The closed
+loop is stable when every root of</p>
+<p>$$(30s+1)(3s+1)(2s+1) + KK_c = 180s^3 + 156s^2 + 35s + (1 + KK_c) = 0$$</p>
+<p>has a negative real part. For a cubic $a_3s^3 + a_2s^2 + a_1s + a_0$
+(all positive) the Routh condition is $a_2a_1 &gt; a_3a_0$:
+$156 \times 35 &gt; 180(1 + KK_c)$, so $KK_c &lt; 29.33$,
+$K_c &lt; 0.326$ /F.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0245dc65">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----the-boundary-from-the-roots">Check -- the boundary from the roots<a class="anchor-link" href="#Check----the-boundary-from-the-roots">¶</a></h3><ul>
+<li><code>np.roots</code> for gains either side of 0.326 /F</li>
+<li>Positive real part = unstable</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f38e2903">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">Kc</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">]:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([</span><span class="mi">180</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">Kc</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Kc = </span><span class="si">{</span><span class="n">Kc</span><span class="si">}</span><span class="s2">: max Re = </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">+.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">Kcu</span> <span class="o">=</span> <span class="p">(</span><span class="mi">156</span> <span class="o">*</span> <span class="mi">35</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">90</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Routh: Kc,u = </span><span class="si">{</span><span class="n">Kcu</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> /F"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Kc = 0.25: max Re = -0.0218
+Kc = 0.32: max Re = -0.0016
+Kc = 0.33: max Re = +0.0011
+Kc = 0.4: max Re = +0.0183
+Routh: Kc,u = 0.3259 /F
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=99ef2704">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> <code>np.roots</code> takes polynomial coefficients from the highest power and
+returns all roots. The largest real part changes sign between 0.32 and
+0.33 /F, and the Routh formula gives 0.3259 /F. This matches the
+lecture's simulation: 0.25 oscillated and decayed, 0.4 grew until the
+burner saturated.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c995b165">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Your-Turn-C,-worked">Your Turn C, worked<a class="anchor-link" href="#Your-Turn-C,-worked">¶</a></h3><ol>
+<li>True error $130 - 128 = 2.0$ F; apparent $130 - 129 = 1.0$ F.</li>
+<li>Only $K_c = 0.4$ hits the 0/1 limits (about 30% of the time).
+Saturation caps the growth, giving a constant-amplitude limit cycle.</li>
+</ol>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=46d7a615">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Part-D">Part D<a class="anchor-link" href="#Part-D">¶</a></h2><h3 id="Variance,-Target-and-Block-Arithmetic">Variance, Target and Block Arithmetic<a class="anchor-link" href="#Variance,-Target-and-Block-Arithmetic">¶</a></h3><p>(Cecil Smith, Introduction and Sec. 1.1-1.2)</p>
+<!-- source: cecil-intro-1.1-1.2 -->
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=273d8b11">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Violation-rate-and-the-target-shift">Violation rate and the target shift<a class="anchor-link" href="#Violation-rate-and-the-target-shift">¶</a></h3><p>For $y \sim N(\mu, \sigma^2)$ and target $\mu = L - z\sigma$:
+$P(y &gt; L) = P(Z &gt; z) = 1 - \Phi(z)$, independent of $\sigma$. With
+$z = 2$, $1 - \Phi(2) = 2.28\%$. Narrowing from $\sigma_1$ to
+$\sigma_2$ at fixed risk moves the target by $z(\sigma_1 - \sigma_2)$.</p>
+<h3 id="Lag-of-a-moving-average-on-a-ramp">Lag of a moving average on a ramp<a class="anchor-link" href="#Lag-of-a-moving-average-on-a-ramp">¶</a></h3><p>Input $x_k = a + bkT_s$. The average of the last $N$ samples is
+$a + bT_s(k - \frac{N-1}{2})$, so it trails by $\frac{N-1}{2}T_s$ in
+time, $b\frac{N-1}{2}T_s$ in value: $0.02 \times 9.5 \times 0.5 =
+0.095$ F for the lecture's numbers.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e9cbffd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Check----the-two-formulas">Check -- the two formulas<a class="anchor-link" href="#Check----the-two-formulas">¶</a></h3><ul>
+<li><code>norm.sf(z)</code> is $1 - \Phi(z)$, the upper-tail probability</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=01463ad9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"P(y &gt; L) for z = 2: </span><span class="si">{</span><span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.02</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ramp lag: </span><span class="si">{</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Ts</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> F"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>P(y &gt; L) for z = 2: 0.0228
+ramp lag: 0.095 F
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><aside class="notes">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c1ee25f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_walkthrough" data-mime-type="text/markdown">
+<p><strong>Code walkthrough.</strong> <code>norm.sf</code> is the survival function of the standard normal: 0.0228, the
+2.3% quoted in the lecture (the simulation gave 2.2% from 10,000
+random samples). The ramp lag prints 0.095 F, the value the lecture's
+moving-average cell measured.</p>
+</div>
+</div>
+</div>
+</div>
+</aside></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5134eb3c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Your-Turn-D,-worked">Your Turn D, worked<a class="anchor-link" href="#Your-Turn-D,-worked">¶</a></h3><ol>
+<li>$\Delta = 2(0.8 - 0.4) = 0.8$.</li>
+<li><code>summer(50, 20, k0=5, k1=0.5, k2=2)</code> $= 5 + 25 + 40 = 70.0$;
+<code>flow_from_valve(60.0)</code> $= 70 \times 0.6 = 42.0$ gpm.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -7691,18 +8119,18 @@ main {
         progress: true,
         history: true,
         transition: "slide",
-        slideNumber: "",
+        slideNumber: "c/t",
         plugins: [RevealNotes],
-        width: 960,
-        height: 700,
+        width: 1024,
+        height: 768,
+        margin: 0.04,
+        center: false,
     });
-
-    var update = function(event){
-      if (window.MathJax && MathJax.Hub && MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+    Reveal.addEventListener('slidechanged', function () {
+      if (window.MathJax && MathJax.Hub &&
+          MathJax.Hub.getAllJax(Reveal.getCurrentSlide())) {
         MathJax.Hub.Rerender(Reveal.getCurrentSlide());
       }
-    };
-
-    Reveal.addEventListener('slidechanged', update);
+    });
 </script>
 </html>

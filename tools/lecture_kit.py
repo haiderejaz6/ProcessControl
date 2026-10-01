@@ -152,3 +152,14 @@ from scipy.integrate import solve_ivp
 from scipy.optimize import curve_fit
 plt.rcParams.update({"font.size": 15})
 """
+
+
+def _code_md(self, explain_md, source, walkthrough, predict=False):
+    """Like Deck.code, but the explain slide is given as full markdown."""
+    self.sub(explain_md)
+    self._code(source, "-", ["predict"] if predict else None)
+    self._md("**Code walkthrough.** " + _clean(walkthrough), "notes",
+             ["walkthrough"])
+
+
+Deck.code_md = _code_md

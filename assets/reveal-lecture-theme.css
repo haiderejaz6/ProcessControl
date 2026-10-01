@@ -147,7 +147,7 @@
 .reveal .jp-OutputArea pre { border-left: 0; background: #ffffff; }
 .reveal .jp-RenderedImage img,
 .reveal .jp-OutputArea img {
-  max-height: 330px;
+  max-height: 310px;
   width: auto;
   box-shadow: none;
   margin: 4px auto;
