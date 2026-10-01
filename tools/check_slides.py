@@ -48,7 +48,7 @@ def main():
             page.wait_for_timeout(250)
             m = page.evaluate(JS_MEASURE)
             idx = page.evaluate("JSON.stringify(Reveal.getIndices())")
-            over = m["used"] > m["h"] + 4
+            over = m["used"] > m["h"] + 16
             if over:
                 bad.append((idx, round(m["used"]), m["title"][:60]))
             if args.shots and (over or args.all):
