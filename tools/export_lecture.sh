@@ -11,6 +11,7 @@
 #   4. localize the deck: local reveal.js/MathJax, theme, no CDN
 #                                              (tools/localize_slides.py)
 #   5. write the Colab copy                    (tools/make_colab.py)
+#   6. render the static read page             (tools/export_read.sh)
 #
 # Run from anywhere; paths are resolved against the repo root.
 set -euo pipefail
@@ -32,3 +33,4 @@ python3 "$ROOT/tools/run_lecture.py" "$NB_PATH"
     --SlidesExporter.reveal_url_prefix="$ASSETS/reveal.js")
 python3 "$ROOT/tools/localize_slides.py" "$DIR/${BASE}_slides.slides.html" "$ASSETS"
 python3 "$ROOT/tools/make_colab.py" "$NB_PATH"
+"$ROOT/tools/export_read.sh" "$NB_PATH"

@@ -23,18 +23,23 @@ ICON = {
     "slides": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>',
     "colab": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.4 9.6A4.8 4.8 0 0 1 17 7M14.6 14.4A4.8 4.8 0 0 1 7 17"/></svg>',
     "binder": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.3 8.3l5 3.7-5 3.7z" fill="currentColor" stroke="none"/></svg>',
+    "read": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>',
     "nb": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>',
 }
 
 
 def actions(path, base):
-    """The four buttons for a notebook at lectures/<path>/<base>.ipynb."""
+    """The five buttons for a notebook at lectures/<path>/<base>.ipynb."""
     rel = f"lectures/{path}/{base}"
     enc = rel.replace("/", "%2F")
     return f"""            <div class="card-actions">
               <a class="btn btn-primary" href="{rel}_slides.slides.html">
                 {ICON['slides']}
                 View slides
+              </a>
+              <a class="btn btn-outline" href="{rel}_read.html">
+                {ICON['read']}
+                Read
               </a>
               <a class="btn btn-outline" href="https://colab.research.google.com/github/{REPO}/blob/main/{rel}_colab.ipynb">
                 {ICON['colab']}

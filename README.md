@@ -23,7 +23,8 @@ Engineering, NUST), taught by Haider Ejaz.
 │   ├── lecture_kit.py          # Deck: the builder every build script uses
 │   ├── check_lecture.py        # format linter (run on every export)
 │   ├── run_lecture.py          # execute a notebook; clear `predict` cells
-│   ├── export_lecture.sh       # lint -> execute -> reveal.js -> localize -> Colab copy
+│   ├── export_lecture.sh       # lint -> execute -> reveal.js -> localize -> Colab copy -> read page
+│   ├── export_read.sh          # static scrollable "Read" page (nbconvert HTML, local MathJax)
 │   ├── localize_slides.py      # point a deck at assets/, drop CDNs, inject the theme
 │   ├── check_slides.py         # Playwright: flag slides that overflow 1024x768
 │   ├── make_colab.py           # the "Open in Colab" variant
@@ -38,6 +39,7 @@ Engineering, NUST), taught by Haider Ejaz.
     │   ├── PSE-823_Lecture-NN_<Topic>.ipynb            # generated
     │   ├── PSE-823_Lecture-NN_<Topic>_colab.ipynb      # generated
     │   ├── PSE-823_Lecture-NN_<Topic>_slides.slides.html   # generated
+    │   ├── PSE-823_Lecture-NN_<Topic>_read.html            # generated ("Read" button)
     │   └── images/                     # figures used by this lecture
     └── derivations/                    # generated companion notebooks, decks, Colab copies
 ```
