@@ -1,0 +1,166 @@
+% =====================================================================
+%  PSE-823 Advanced Process Dynamics and Control -- Assignment 1, Fall 2026
+%  Open-loop dynamics of a first-order and a second-order system
+%  50 marks | due 30 October 2026
+%
+%  ONE SOURCE, TWO PAPERS
+%    pdflatex PSE823_Assignment1.tex       -> student paper (one page)
+%    pdflatex PSE823_Assignment1_Key.tex   -> answer key (same layout, answers filled)
+%  Run pdflatex twice so "page x/y" resolves. No -shell-escape needed.
+%  Design language follows CHE-226 Midterm_Fall26.tex (black and white, A4).
+% =====================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper, top=20mm, bottom=22mm, left=15mm, right=15mm,
+            headheight=14pt, headsep=6mm, footskip=12mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\IfFileExists{inconsolata.sty}{\usepackage[varqu,varl,var0]{inconsolata}}{}  % code font; falls back to default mono if absent
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{array, tabularx}
+\usepackage{fancyhdr, lastpage, eso-pic}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\newif\ifkey
+\ifdefined\withkey \keytrue \fi
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------------------------------------------------------------------
+% Header / footer (same pattern as the CHE-226 papers)
+% ---------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small (PSE823) Advanced Process Dynamics and Control}
+\rhead{\small Assignment 1 (Fall 2026)\ifkey\ --- \textbf{ANSWER KEY}\fi}
+\lfoot{\small Instructor: Dr.\ Haider Ejaz \makebox[3.2cm]{\dotfill}}
+\cfoot{\small \thepage/\pageref{LastPage}}
+\rfoot{\small HoD: Dr.\ Iftikhar Ahmad \makebox[3.2cm]{\dotfill}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand\BackgroundBorder{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[line width=0.3mm]
+      ([xshift=6mm,yshift=-6mm]current page.north west) rectangle
+      ([xshift=-6mm,yshift=6mm]current page.south east);
+  \end{tikzpicture}}
+\AddToShipoutPicture{\BackgroundBorder}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\cv}[1]{\textbf{#1}}   % action verb
+\newcommand{\mk}[1]{\textbf{[#1]}}
+
+% Answer box (used only in the key): thin black frame, model answer inside
+\tcbset{answer/.style={enhanced, colback=white, colframe=black, boxrule=0.5pt,
+  arc=0pt, outer arc=0pt, left=5pt, right=5pt, top=3pt, bottom=3pt,
+  before skip=3pt, after skip=4pt, valign=top, fontupper=\small}}
+\newcommand{\keyans}[1]{\ifkey\par\begin{tcolorbox}[answer]#1\end{tcolorbox}\fi}
+
+% \qhead{label}{verb + task}{marks}
+\newcommand{\qhead}[3]{\textbf{#1}\enspace #2\hfill\mk{#3}\par\vspace{1pt}}
+
+% Section banner: thick rule / title + marks / thin rule
+\newcommand{\examsection}[3]{% {letter}{title}{marks}
+  \par\vspace{6pt}
+  \noindent\rule{\linewidth}{1.4pt}\par\vspace{2pt}
+  {\large\bfseries Part #1\quad #2}\hfill {\small\textbf{#3 marks}}\par
+  \vspace{1pt}\noindent\rule{\linewidth}{0.4pt}\par\vspace{3pt}}
+
+\newcommand{\sectionnote}[1]{{\small\itshape #1}\par\vspace{3pt}}
+\newlength{\qgap}\setlength{\qgap}{4pt}
+\newenvironment{qblock}{\par\noindent\begin{minipage}{\linewidth}\small}{\end{minipage}\par\vspace{\qgap}}
+
+% =====================================================================
+\begin{document}
+% =====================================================================
+
+\begin{center}
+  {\bfseries SCHOOL OF CHEMICAL \& MATERIALS ENGINEERING}\\[1pt]
+  {\bfseries NATIONAL UNIVERSITY OF SCIENCES \& TECHNOLOGY, ISLAMABAD}\\[4pt]
+  {\Large\bfseries PSE-823 Advanced Process Dynamics and Control}\\[2pt]
+  {\large Assignment 1 \textbullet\ Fall 2026\ifkey\ \textbullet\ \textbf{Answer Key}\fi}
+\end{center}
+\vspace{1pt}
+
+{\renewcommand{\arraystretch}{1.45}
+\begin{tabularx}{\linewidth}{|l X|l p{44mm}|}
+  \hline
+  \textbf{Full Name:} & & \textbf{Reg \#:} & \\ \hline
+  \textbf{Topic:} & Open-loop dynamics, Python & \textbf{Due Date:} & \textbf{30 Oct 2026}, on Teams \\ \hline
+\end{tabularx}}
+
+\vspace{5pt}
+\noindent
+\begin{minipage}[t]{0.58\linewidth}\vspace{0pt}
+  \begin{tcolorbox}[enhanced, colback=white, colframe=black, boxrule=0.5pt, arc=0pt,
+                    left=5pt, right=5pt, top=2pt, bottom=2pt, fontupper=\footnotesize]
+  \textbf{Instructions}
+  \raggedright\begin{itemize}[leftmargin=1.1em, nosep, topsep=1pt]
+    \item Task 1 of each Part is a \textbf{derivation by hand}: submit clear photos or scans of your handwritten notes (one PDF); typed derivations are not accepted.
+    \item Tasks 2--3 are coded in the starter notebook \code{PSE823\_Assignment1\_Starter.ipynb} (Colab). Enter your hand results in the first cell of each Part so the code can check them. Submit it as \code{.ipynb} \textbf{or} PDF.
+    \item $d$ = \textbf{last digit of your Reg \#}; it sets the values below.
+    \item Discuss freely, but derivations, code and answers must be your own.
+    \item Notebook: \emph{Restart and run all}, outputs visible, labelled axes with units; written answers must quote your own numbers.
+  \end{itemize}
+  \end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\linewidth}\vspace{0pt}
+  {\small\renewcommand{\arraystretch}{1.3}
+  \begin{tabularx}{\linewidth}{|c|>{\raggedright\arraybackslash}X|c|c|}
+    \hline
+    \textbf{Part} & \textbf{Content} & \textbf{Marks} & \textbf{Got}\\ \hline
+    A & Tank (first order) & 22 & \\ \hline
+    B & Manometer (second order) & 22 & \\ \hline
+    C & Presentation & 6 & \\ \hline
+    \multicolumn{2}{|r|}{\textbf{Total}} & \textbf{50} & \\ \hline
+  \end{tabularx}}
+\end{minipage}
+
+% =====================================================================
+\examsection{A}{First-order system: liquid-level tank}{22}
+\sectionnote{Coughanowr Sec.\ 5.2, Prob.\ 5.2. A tank of area $A=1.0+0.2d$ m$^2$ and height 6.0 m drains through $q_o=C\sqrt h$ (Eq.\ 5.30). At the operating point $q_s=0.020$ m$^3$/s and $h_s=2.0$ m (water).}
+
+\begin{qblock}
+\qhead{A1}{\cv{Derive} by hand.}{7}
+(a) From the mass balance (Eq.\ 5.31) \cv{find} $C$, \cv{linearize} about $h_s$ and \cv{obtain} $H/Q=R_1/(\tau s+1)$ with numerical $R_1$, $\tau$ and units. (b) \cv{Write} the linear step response for $\Delta q=f\,q_s$. (c) For steps of $+10\%$, $+60\%$, $-60\%$ in $q$, \cv{compute} the exact final level $(q/C)^2$ and the linear-model final level. (d) \cv{Compute} the true time constant $2A\sqrt h/C$ at each new level.
+\end{qblock}
+
+\begin{qblock}
+\qhead{A2}{\cv{Code} linear versus nonlinear.}{9}
+\cv{Enter} your A1 values. \cv{Write} \code{h\_linear} and \code{h\_nonlinear} (\code{solve\_ivp}, Eq.\ 5.32); \cv{plot} both for the three steps in three panels over $0\le t\le6\tau$, marking $h=0$ and 6 m; \cv{check} against \code{ct.step\_response}. \cv{Print} a table per step: hand final levels, max error (m), error as \% of the change, apparent time constant (63.2\% of the nonlinear change) and your hand $\tau$ from (d).
+\end{qblock}
+
+\begin{qblock}
+\qhead{A3}{\cv{Code} and \cv{interpret}.}{6}
+\cv{Plot} $\tau(h_s)$ for $0.2\le h_s\le6$ m with the four levels marked, and \cv{find} the largest step up and down (1\% resolution) with linearization error $\le5\%$ of the change \mk{3}. In at most six sentences with numbers, \cv{explain}: for which steps the linear model is acceptable and why its error grows; what it predicts for $-60\%$ and why that is impossible; whether $+60\%$ overflows, and if the linear prediction is safe or unsafe for a high-level alarm \mk{3}.
+\end{qblock}
+
+% =====================================================================
+\examsection{B}{Second-order system: U-tube manometer}{22}
+\sectionnote{Coughanowr Sec.\ 7.1, Prob.\ 7.5. Column length $L=1.0+0.1d$ m, water at 20$^\circ$C ($\rho=998$ kg/m$^3$, $\mu=1.00$ mPa\,s, $g=9.81$ m/s$^2$), laminar flow, $\beta=4/3$, suddenly subjected to $\Delta P/\rho g=0.20$ m. Tube diameters $D=1.0,\ 1.5,\ 2.5$ mm.}
+
+\begin{qblock}
+\qhead{B1}{\cv{Derive} by hand.}{7}
+(a) From Eq.\ 7.3 \cv{obtain} Eq.\ 7.4 and $\tau^2Y''+2\zeta\tau Y'+Y=X$; \cv{derive} $\tau$ and $\zeta$ (check the square roots yourself). (b) \cv{Compute} $\tau,\zeta$ for the three tubes and \cv{classify} each. (c) For the underdamped tube \cv{compute} overshoot, decay ratio and period (Eqs.\ 7.25--7.28). (d) \cv{Find} the diameter giving $\zeta=0.7$.
+\end{qblock}
+
+\begin{qblock}
+\qhead{B2}{\cv{Code} three solutions and measurements.}{9}
+\cv{Enter} your hand values. For each tube \cv{compute} the step response by (i) your own analytic function covering all damping cases, (ii) \code{solve\_ivp} (keep the velocity), (iii) \code{ct.step\_response}; one plot, $0\le t\le8$ s; \cv{print} the largest differences. For the underdamped tube \cv{measure} overshoot, decay ratio and period from the simulation and \cv{compare} with your hand values; \cv{report} the 5\% response time of all three tubes.
+\end{qblock}
+
+\begin{qblock}
+\qhead{B3}{\cv{Code} and \cv{interpret}.}{6}
+For $0.05\le\zeta\le3$ \cv{plot} overshoot and 5\% response time$/\tau$ and \cv{report} the best $\zeta$ \mk{1}; \cv{simulate} your B1(d) design and \cv{compute} the peak Reynolds number per tube (mean velocity $\tfrac12|dh/dt|$) \mk{1}; \cv{split} the most overdamped tube into two lags (Eqs.\ 7.23--7.24, \code{ct.series}) and compare with one lag $\tau_1$ \mk{1}. In at most six sentences with numbers, \cv{explain}: which tube you would fit and why; which lag makes the overdamped tube slow and why the other is invisible; whether laminar flow holds \mk{3}.
+\end{qblock}
+
+% =====================================================================
+\examsection{C}{Presentation and reproducibility}{6}
+{\small The notebook runs top to bottom after \emph{Restart and run all} \mk{3}; figures have labelled axes, units and legends \mk{2}; handwritten derivations are legible and code is commented with the symbols of the text \mk{1}.}
+
+
+\end{document}
