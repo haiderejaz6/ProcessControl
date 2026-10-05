@@ -12,10 +12,13 @@ Engineering, NUST), taught by Haider Ejaz.
 ├── index.html                  # landing page: lecture cards (generated between markers)
 ├── derivations.html            # companion derivation notebooks (generated between markers)
 ├── chapters.html               # textbook chapter list + private reader links (generated)
+├── assignments.html            # assignments and projects: sheets, starter notebooks, how to submit
 ├── resources.html              # reference notes from the Instrumentation & Process Control course
 ├── course-info.html            # syllabus, objectives, reading list
 ├── REVISION_PLAN.md            # the derive-then-code revision plan and its status
 ├── requirements.txt, runtime.txt   # the Binder environment
+├── assignments/                # assignment sheets (.tex source without the key, compiled .pdf)
+│                               #   and starter notebooks
 ├── resources/                  # PDFs/PPTX + the Python primer notebook (own export_slides.sh)
 ├── assets/                     # shared by every deck: local reveal.js, pruned MathJax,
 │                               #   reveal-lecture-theme.css, site.css

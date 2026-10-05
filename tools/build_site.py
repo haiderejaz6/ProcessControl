@@ -132,7 +132,8 @@ def update_derivations():
 
 
 NAV = [("index.html", "Lectures"), ("derivations.html", "Derivations"),
-       ("chapters.html", "Chapters"), ("resources.html", "Resources"),
+       ("chapters.html", "Chapters"), ("assignments.html", "Assignments"),
+       ("resources.html", "Resources"),
        ("course-info.html", "Course info")]
 
 
